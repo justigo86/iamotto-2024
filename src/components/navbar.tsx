@@ -8,15 +8,26 @@ import { useState } from "react";
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
 
-  const openNav = () => setExpandNav(!expandNav);
+  const toggleNav = () => setExpandNav(!expandNav);
 
   return (
-    <nav className="fixed top-0 min-w-full flex justify-between">
-      <Button variant="link" onClick={openNav}>
-        Menu
-      </Button>
-      <ModeToggle />
-      {expandNav && <NavMenu />}
+    <nav className="flex fixed top-0">
+      {expandNav ? (
+        <div className="outline-dashed bg-cyan-200 dark:bg-cyan-800 h-screen w-screen overflow-hidden">
+          <Button variant="link" onClick={toggleNav}>
+            Collapse
+          </Button>
+          <NavMenu />
+        </div>
+      ) : (
+        <div className="flex justify-between w-screen h-16">
+          <Button variant="link" onClick={toggleNav}>
+            Menu
+          </Button>
+          <ModeToggle />
+        </div>
+      )}
+      {/* {expandNav && <NavMenu {...{ expandNav, setExpandNav }} />} */}
     </nav>
   );
 };
