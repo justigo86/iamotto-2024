@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 
 interface LinkInterface {
   id: number;
@@ -28,22 +28,42 @@ const links: LinkInterface[] = [
   },
 ];
 
+const navMenuItemVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 0 },
+  visible: { opacity: 1, y: 20 },
+};
+
 const NavMenu = () => {
   return (
-    <div className="flex flex-col mx-4 mt-10">
+    <motion.div
+      className="flex flex-col mx-4 mt-10"
+      variants={navMenuItemVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {links.map((link: LinkInterface) => {
         return (
-          <Link
+          <motion.div
             key={link.id}
-            href={link.path}
-            className="my-5 hover:cursor-pointer hover:underline text-2xl"
+            variants={item}
+            className="my-5 hover:cursor-pointer hover:underline text-2xl w-fit"
           >
-            <span>0{link.id}</span>
-            {link.path}
-          </Link>
+            <Link href={link.path}>
+              <span>0{link.id}</span>
+              {link.path}
+            </Link>
+          </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 

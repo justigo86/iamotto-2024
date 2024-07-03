@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./mode-toggle";
 import NavMenu from "./navmenu";
 import { useState } from "react";
+import { motion, Variants } from "framer-motion";
+
+const navMenuVariants: Variants = {
+  hidden: { height: 0 },
+  visible: {
+    height: "100vh",
+    transition: { duration: 0.5, staggerChildren: 0.1 },
+  },
+};
 
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
@@ -13,12 +22,17 @@ const Navbar = () => {
   return (
     <nav className="flex fixed top-0">
       {expandNav ? (
-        <div className="outline-dashed bg-cyan-200 dark:bg-cyan-800 h-screen w-screen overflow-hidden">
+        <motion.div
+          className="bg-cyan-200 dark:bg-cyan-800 h-screen w-screen overflow-hidden"
+          variants={navMenuVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <Button variant="link" onClick={toggleNav}>
             Collapse
           </Button>
           <NavMenu />
-        </div>
+        </motion.div>
       ) : (
         <div className="flex justify-between w-screen h-16">
           <Button variant="link" onClick={toggleNav}>
