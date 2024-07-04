@@ -36,7 +36,7 @@ const navMenuItemVariants: Variants = {
   },
 };
 
-const item = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 0 },
   visible: { opacity: 1, y: 20 },
 };
@@ -53,7 +53,7 @@ const NavMenu = () => {
         return (
           <motion.div
             key={link.id}
-            variants={item}
+            variants={itemVariants}
             className="my-5 hover:cursor-pointer hover:underline text-2xl w-fit"
           >
             <Link href={link.path}>

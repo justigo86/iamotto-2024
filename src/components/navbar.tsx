@@ -7,10 +7,10 @@ import { useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 const navMenuVariants: Variants = {
-  hidden: { height: 0 },
+  hidden: { height: 0, transition: { duration: 0.5 } },
   visible: {
     height: "100vh",
-    transition: { duration: 0.5, staggerChildren: 0.1 },
+    transition: { duration: 0.8, ease: "circInOut" },
   },
 };
 
@@ -41,7 +41,6 @@ const Navbar = () => {
           <ModeToggle />
         </div>
       )}
-      {/* {expandNav && <NavMenu {...{ expandNav, setExpandNav }} />} */}
     </nav>
   );
 };
