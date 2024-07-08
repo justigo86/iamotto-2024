@@ -88,8 +88,8 @@ const config = {
       },
     },
     fontFamily: {
-      sans: ["Raleway", "sans-serif"],
-      serif: ["Titillium Web", "serif"],
+      raleway: ["Raleway", "sans-serif"],
+      titillium: ["Titillium Web", "serif"],
     },
   },
   plugins: [require("tailwindcss-animate")],

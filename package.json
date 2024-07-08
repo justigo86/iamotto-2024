@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-css": "npx tailwindcss -i ./src/input.css -o ./src/app/globals.css --watch"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.1",
