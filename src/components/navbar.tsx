@@ -31,7 +31,7 @@ const Navbar = () => {
           <Button variant="link" onClick={toggleNav}>
             Collapse
           </Button>
-          <NavMenu />
+          <NavMenu setExpandNav={setExpandNav} />
         </motion.div>
       ) : (
         <div className="flex justify-between w-screen h-16">

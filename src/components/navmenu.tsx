@@ -4,6 +4,10 @@ import React from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
+type Props = {
+  setExpandNav: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 interface LinkInterface {
   id: number;
   path: string;
@@ -41,7 +45,9 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 20 },
 };
 
-const NavMenu = () => {
+const NavMenu = ({ setExpandNav }: Props) => {
+  const toggleNav = () => setExpandNav(!setExpandNav);
+
   return (
     <motion.div
       className="flex flex-col mx-4 mt-10"
@@ -56,7 +62,7 @@ const NavMenu = () => {
             variants={itemVariants}
             className="my-5 hover:cursor-pointer hover:underline text-2xl w-fit"
           >
-            <Link href={link.path}>
+            <Link href={link.path} onClick={toggleNav}>
               <span>0{link.id}</span>
               {link.path}
             </Link>
