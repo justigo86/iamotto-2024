@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className="flex fixed top-0">
       {expandNav ? (
         <motion.div
-          className="bg-cyan-200 dark:bg-cyan-800 h-screen w-screen overflow-hidden"
+          className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
           variants={navMenuVariants}
           initial="hidden"
           animate="visible"
