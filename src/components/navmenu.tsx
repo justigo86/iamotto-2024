@@ -41,7 +41,7 @@ const navMenuItemVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 0 },
+  hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 20 },
 };
 
@@ -60,11 +60,60 @@ const NavMenu = ({ setExpandNav }: Props) => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className="my-5 hover:cursor-pointer hover:underline text-2xl w-fit"
+            className="my-5 text-6xl uppercase w-fit"
           >
             <Link href={link.path} onClick={toggleNav}>
-              <span>0{link.id}</span>
-              {link.path}
+              <motion.div
+                className="relative block overflow-hidden whitespace-nowrap"
+                variants={itemVariants}
+                initial="initial"
+                whileHover="hovered"
+              >
+                <motion.div>
+                  <span className="text-lg">0{link.id}</span>
+                  {link.path.split("").map((letter, index) => {
+                    return (
+                      <motion.span
+                        key={index}
+                        className="inline-block"
+                        variants={{
+                          initial: { y: 0 },
+                          hovered: { y: "-100%" },
+                        }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.03 * index,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        {letter}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+                <motion.div className="absolute inset-0">
+                  <span className="text-lg">0{link.id}</span>
+                  {link.path.split("").map((letter, index) => {
+                    return (
+                      <motion.span
+                        key={index}
+                        className="inline-block"
+                        variants={{
+                          initial: { y: "100%" },
+                          hovered: { y: 0 },
+                        }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.03 * index,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        {letter}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+              </motion.div>
             </Link>
           </motion.div>
         );
