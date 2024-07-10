@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "../theme/mode-toggle";
 import NavMenu from "./navmenu";
 import { useState } from "react";
 import { motion, Variants } from "framer-motion";
