@@ -1,19 +1,40 @@
 "use client";
 import bgBlue from "/public/blue-view.jpg";
+import bgVercel from "/public/vercel.svg";
+import bgNext from "/public/next.svg";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 type Props = {};
+
+const marqueeVariants = {
+  animate: {
+    x: [0, -1035],
+    transition: {
+      x: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 5,
+        ease: "linear",
+      },
+    },
+  },
+};
 
 const Ticker = (props: Props) => {
   return (
     <section className="relative h-[30vh] w-screen bg-white flex items-center">
-      <div className="h-[25vh] w-screen bg-blue-600 flex items-center overflow-hidden">
-        <div className="flex gap-4">
+      <div className="h-[25vh] w-screen bg-pink-500 flex items-center overflow-hidden">
+        <motion.div
+          className="flex gap-4"
+          variants={marqueeVariants}
+          animate="animate"
+        >
           {cards.map((card) => {
             return <Card key={card.id} card={card} />;
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -55,27 +76,27 @@ const cards: CardType[] = [
     id: 1,
   },
   {
-    url: "/public/vercel.svg",
+    url: bgVercel.src,
     title: "Title 2",
     id: 2,
   },
   {
-    url: "/public/vercel.svg",
+    url: bgVercel.src,
     title: "Title 3",
     id: 3,
   },
   {
-    url: "/public/vercel.svg",
+    url: bgVercel.src,
     title: "Title 4",
     id: 4,
   },
   {
-    url: "/public/vercel.svg",
+    url: bgVercel.src,
     title: "Title 5",
     id: 5,
   },
   {
-    url: "/public/next.svg",
+    url: bgNext.src,
     title: "Title 6",
     id: 6,
   },
