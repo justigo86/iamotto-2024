@@ -4,30 +4,31 @@ import bgVercel from "/public/vercel.svg";
 import bgNext from "/public/next.svg";
 
 import React from "react";
-import { motion } from "framer-motion";
-
-type Props = {};
+import { motion, useAnimate } from "framer-motion";
 
 const marqueeVariants = {
   animate: {
-    x: [0, -1035],
+    x: "-50%",
     transition: {
       x: {
         repeat: Infinity,
         repeatType: "loop",
-        duration: 5,
+        duration: 9,
         ease: "linear",
       },
     },
   },
 };
 
-const Ticker = (props: Props) => {
+const Ticker = () => {
+  // const [scope, animate] = useAnimate();
   const [numDupes, setNumDupes] = React.useState<number>(1);
   const tickerRef = React.useRef<HTMLDivElement>(null);
   const [tickerContentWidth, setTickerContentWidth] = React.useState<
     number | null
   >(0);
+
+  // const animation = animate(0, 100);
 
   React.useEffect(() => {
     let contentWidth = 0;
@@ -51,11 +52,15 @@ const Ticker = (props: Props) => {
         )
       );
     }
-  }, [tickerRef.current, tickerContentWidth]);
+  }, [tickerContentWidth]);
 
   return (
     <section className="relative h-[30vh] w-screen bg-white flex items-center">
-      <div className="h-[25vh] w-screen bg-pink-500 flex items-center overflow-hidden">
+      <div
+        className="h-[25vh] w-screen bg-pink-500 flex items-center overflow-hidden"
+        // onMouseEnter={() => animation.pause()}
+        // onMouseLeave={() => animation.play()}
+      >
         <motion.div
           className="flex gap-4"
           variants={marqueeVariants}
