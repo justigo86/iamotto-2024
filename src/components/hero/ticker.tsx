@@ -3,22 +3,14 @@ import bgBlue from "/public/blue-view.jpg";
 import bgVercel from "/public/vercel.svg";
 import bgNext from "/public/next.svg";
 
-import React from "react";
-import { motion, useAnimate } from "framer-motion";
-
-const marqueeVariants = {
-  animate: {
-    x: "-50%",
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 9,
-        ease: "linear",
-      },
-    },
-  },
-};
+import React, { useEffect, useRef } from "react";
+import {
+  animate,
+  AnimationPlaybackControls,
+  motion,
+  useAnimate,
+  useMotionValue,
+} from "framer-motion";
 
 const Ticker = () => {
   // const [scope, animate] = useAnimate();
@@ -27,23 +19,26 @@ const Ticker = () => {
   const [tickerContentWidth, setTickerContentWidth] = React.useState<
     number | null
   >(0);
+  const spin = useMotionValue(0);
+  const controls = useRef<AnimationPlaybackControls | null>(null);
 
   // const animation = animate(0, 100);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let contentWidth = 0;
 
     for (let index = 0; index < cards.length; index++) {
-      const element = document.getElementById("_" + index)?.clientWidth;
-      if (element) {
-        contentWidth += element;
-      }
+      const element = document.getElementById(index.toString());
+      console.log(element);
+      // if (element) {
+      //   contentWidth += element;
+      // }
     }
 
     setTickerContentWidth(contentWidth);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (tickerRef.current && tickerContentWidth) {
       setNumDupes(
         Math.max(
@@ -53,6 +48,24 @@ const Ticker = () => {
       );
     }
   }, [tickerContentWidth]);
+
+  const marqueeVariants = {
+    animate: {
+      x: tickerContentWidth ? tickerContentWidth * -1 : 0,
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: 9,
+          ease: "linear",
+        },
+      },
+    },
+  };
+
+  // useEffect(() => {
+  //   animate(spin, , {})
+  // })
 
   return (
     <section className="relative h-[30vh] w-screen bg-white flex items-center">
@@ -65,13 +78,16 @@ const Ticker = () => {
           className="flex gap-4"
           variants={marqueeVariants}
           animate="animate"
+          // style={{
+          //   x
+          // }}
         >
-          {cards.map((card) => {
-            return <Card key={card.id} card={card} />;
+          {cards.map((card, index) => {
+            return <Card key={card.id} id={index.toString()} card={card} />;
           })}
           {[...Array(numDupes)].map((_) =>
-            cards.map((card) => {
-              return <Card key={card.id} card={card} />;
+            cards.map((card, index) => {
+              return <Card key={card.id} id={index.toString()} card={card} />;
             })
           )}
         </motion.div>
@@ -80,7 +96,7 @@ const Ticker = () => {
   );
 };
 
-const Card = ({ card }: { card: CardType }) => {
+const Card = ({ card }: { card: CardType; id: string }) => {
   return (
     <div
       key={card.id}
