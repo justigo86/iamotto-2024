@@ -5,10 +5,10 @@ import bgNext from "/public/next.svg";
 
 import React, { useEffect, useRef } from "react";
 import {
-  animate,
+  // animate,
   AnimationPlaybackControls,
   motion,
-  useAnimate,
+  // useAnimate,
   useMotionValue,
 } from "framer-motion";
 
@@ -26,14 +26,16 @@ const Ticker = () => {
 
   useEffect(() => {
     let contentWidth = 0;
+    const element = document.querySelector(".card");
+    contentWidth += element?.clientWidth || 0;
 
-    for (let index = 0; index < cards.length; index++) {
-      const element = document.getElementById(index.toString());
-      console.log(element);
-      // if (element) {
-      //   contentWidth += element;
-      // }
-    }
+    // for (let index = 0; index < cards.length; index++) {
+    //   const element = document.querySelector(".card");
+    // console.log(element);
+    // if (element) {
+    //   contentWidth += element;
+    // }
+    // }
 
     setTickerContentWidth(contentWidth);
   }, []);
@@ -75,19 +77,19 @@ const Ticker = () => {
         // onMouseLeave={() => animation.play()}
       >
         <motion.div
-          className="flex gap-4"
+          className="card flex gap-4"
           variants={marqueeVariants}
           animate="animate"
           // style={{
           //   x
           // }}
         >
-          {cards.map((card, index) => {
-            return <Card key={card.id} id={index.toString()} card={card} />;
+          {cards.map((card) => {
+            return <Card key={card.id} card={card} />;
           })}
           {[...Array(numDupes)].map((_) =>
-            cards.map((card, index) => {
-              return <Card key={card.id} id={index.toString()} card={card} />;
+            cards.map((card) => {
+              return <Card key={card.id} card={card} />;
             })
           )}
         </motion.div>
@@ -96,7 +98,7 @@ const Ticker = () => {
   );
 };
 
-const Card = ({ card }: { card: CardType; id: string }) => {
+const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
