@@ -60,14 +60,14 @@ const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
     setX();
   };
 
-  const [_, loopStart] = useRafLoop(loop, false);
+  const [loopStop, loopStart, isActive] = useRafLoop(loop, false);
 
   useEffect(() => {
     loopStart();
   }, []);
 
   return (
-    <motion.div className="item" ref={itemRef}>
+    <motion.div className="nowrap" ref={itemRef}>
       {children}
     </motion.div>
   );
@@ -76,13 +76,18 @@ const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
 type MarqueeProps = {
   speed?: number;
   threshold?: number;
-  wheelFactor?: number;
+  // wheelFactor?: number;
   dragFactor?: number;
   children: React.ReactNode;
 };
 
 export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
-  const { speed = 1, threshold = 0.014, wheelFactor = 1.8, children } = props;
+  const {
+    speed = 1,
+    threshold = 0.014,
+    // wheelFactor = 1.8,
+    children,
+  } = props;
 
   const marqueeRef = useRef<HTMLDivElement>(null);
   const slowDown = useRef(false);
@@ -108,21 +113,21 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
     [1, 0, 1]
   );
 
-  const handleOnWheel = (e: React.WheelEvent<HTMLDivElement> | undefined) => {
-    // const normalized = normalizeWheel(e);
+  // const handleOnWheel = (e: React.WheelEvent<HTMLDivElement> | undefined) => {
+  // const normalized = normalizeWheel(e);
 
-    // This will use the wheel to speed up the timeline
-    // x.current = normalized.pixelY * wheelFactor;
+  // This will use the wheel to speed up the timeline
+  // x.current = normalized.pixelY * wheelFactor;
 
-    // reset speed on scroll end
-    if (isScrolling.current) {
-      window.clearTimeout(isScrolling.current);
-    }
+  // reset speed on scroll end
+  //   if (isScrolling.current) {
+  //     window.clearTimeout(isScrolling.current);
+  //   }
 
-    isScrolling.current = setTimeout(() => {
-      speedSpring.set(speed);
-    }, 30);
-  };
+  //   isScrolling.current = setTimeout(() => {
+  //     speedSpring.set(speed);
+  //   }, 30);
+  // };
 
   const loop = () => {
     /**
@@ -157,12 +162,16 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
 
   return (
     <>
-      <motion.div className="bg" style={{ opacity }} ref={constraintsRef} />
       <motion.div
-        className="marquee"
+        className="fixed bottom-0 height-20 w-100"
+        style={{ opacity }}
+        ref={constraintsRef}
+      />
+      <motion.div
+        className="flex items-center z-10"
         ref={marqueeRef}
         style={{ skewX }}
-        onWheel={handleOnWheel}
+        // onWheel={handleOnWheel}
       >
         <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
         <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
