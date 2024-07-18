@@ -12,7 +12,7 @@ const Hero = (props: Props) => {
     <div>
       <h1 className="text-4xl font-raleway font-bold">J.Otto</h1>
       {/* <Ticker /> */}
-      <div className="top-40 left-0 w-100 overflow-hidden bg-orange-300">
+      <div>
         <Ticker>
           {cards.map((card) => {
             return <Card key={card.id} card={card} />;

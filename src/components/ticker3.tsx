@@ -67,7 +67,7 @@ const TickerItem: React.FC<TickerItemProps> = (props) => {
   }, []);
 
   return (
-    <motion.div className="nowrap" ref={itemRef}>
+    <motion.div className=" flex nowrap" ref={itemRef}>
       {children}
     </motion.div>
   );
@@ -89,29 +89,29 @@ export const Ticker: React.FC<TickerProps> = (props) => {
     children,
   } = props;
 
-  const ref = useRef<HTMLDivElement>(null);
+  // const ref = useRef<HTMLDivElement>(null);
   const slowDown = useRef(false);
   // const isScrolling = useRef<NodeJS.Timeout | null>(null);
-  const constraintsRef = useRef<HTMLDivElement>(null);
+  // const constraintsRef = useRef<HTMLDivElement>(null);
 
   const x = useRef(0);
-  const [wWidth] = useWindowSize();
+  // const [wWidth] = useWindowSize();
   const speedSpring = useSpring(speed, {
     damping: 40,
     stiffness: 90,
     mass: 5,
   });
 
-  const opacity = useTransform(
-    speedSpring,
-    [-wWidth * 0.05, 0, wWidth * 0.05],
-    [1, 0, 1]
-  );
-  const skewX = useTransform(
-    speedSpring,
-    [-wWidth * 0.05, 0, wWidth * 0.05],
-    [1, 0, 1]
-  );
+  // const opacity = useTransform(
+  //   speedSpring,
+  //   [-wWidth * 0.05, 0, wWidth * 0.05],
+  //   [1, 0, 1]
+  // );
+  // const skewX = useTransform(
+  //   speedSpring,
+  //   [-wWidth * 0.05, 0, wWidth * 0.05],
+  //   [1, 0, 1]
+  // );
 
   // const handleOnWheel = (e: React.WheelEvent<HTMLDivElement> | undefined) => {
   // const normalized = normalizeWheel(e);
@@ -163,14 +163,22 @@ export const Ticker: React.FC<TickerProps> = (props) => {
   return (
     <>
       <motion.div
-        className="fixed bottom-0 height-20 w-100"
-        style={{ opacity }}
-        ref={constraintsRef}
+        className="bottom-0 height-20 w-100"
+        // style={{
+        // opacity,
+        // position: "fixed",
+        // top: 0,
+        // left: 0,
+        // height: "100%",
+        // width: "100%",
+        // backgroundColor: "blue",
+        // }}
+        // ref={constraintsRef}
       />
       <motion.div
         className="flex items-center"
-        ref={ref}
-        style={{ skewX }}
+        // ref={ref}
+        // style={{ skewX, display: "flex", alignItems: "center", zIndex: 1 }}
         // onWheel={handleOnWheel}
       >
         <TickerItem speed={speedSpring}>{children}</TickerItem>

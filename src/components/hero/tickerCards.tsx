@@ -46,7 +46,7 @@ export const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className="flex relative h-[20vh] w-[30vw] overflow-hidden bg-neutral-200"
+      className="relative h-[20vh] w-[30vw] overflow-hidden bg-neutral-200"
     >
       <div
         style={{
