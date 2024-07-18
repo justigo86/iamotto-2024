@@ -17,12 +17,12 @@ import { useWindowSize } from "@react-hook/window-size";
  * @see https://codesandbox.io/s/x3r465?file=/src/App.js
  */
 
-type MarqueeItemProps = {
+type TickerItemProps = {
   children: React.ReactNode;
   speed: MotionValue<any>;
 };
 
-const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
+const TickerItem: React.FC<TickerItemProps> = (props) => {
   const { children, speed } = props;
 
   const itemRef = useRef<HTMLDivElement>(null);
@@ -73,7 +73,7 @@ const MarqueeItem: React.FC<MarqueeItemProps> = (props) => {
   );
 };
 
-type MarqueeProps = {
+type TickerProps = {
   speed?: number;
   threshold?: number;
   // wheelFactor?: number;
@@ -81,7 +81,7 @@ type MarqueeProps = {
   children: React.ReactNode;
 };
 
-export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
+export const Ticker: React.FC<TickerProps> = (props) => {
   const {
     speed = 1,
     threshold = 0.014,
@@ -89,9 +89,9 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
     children,
   } = props;
 
-  const marqueeRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const slowDown = useRef(false);
-  const isScrolling = useRef<NodeJS.Timeout | null>(null);
+  // const isScrolling = useRef<NodeJS.Timeout | null>(null);
   const constraintsRef = useRef<HTMLDivElement>(null);
 
   const x = useRef(0);
@@ -168,13 +168,13 @@ export const InteractiveMarquee: React.FC<MarqueeProps> = (props) => {
         ref={constraintsRef}
       />
       <motion.div
-        className="flex items-center z-10"
-        ref={marqueeRef}
+        className="flex items-center"
+        ref={ref}
         style={{ skewX }}
         // onWheel={handleOnWheel}
       >
-        <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
-        <MarqueeItem speed={speedSpring}>{children}</MarqueeItem>
+        <TickerItem speed={speedSpring}>{children}</TickerItem>
+        <TickerItem speed={speedSpring}>{children}</TickerItem>
       </motion.div>
     </>
   );
