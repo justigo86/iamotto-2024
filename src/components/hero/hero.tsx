@@ -5,11 +5,9 @@ import React from "react";
 import { Ticker } from "../ticker3";
 import { cards, Card } from "./tickerCards";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
-    <div className="z-0">
+    <div className="z-0 overflow-hidden">
       <h1 className="text-4xl font-raleway font-bold">J.Otto</h1>
       {/* <Ticker /> */}
       <div>

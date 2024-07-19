@@ -1,22 +1,47 @@
 "use client";
 
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
-export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
+// const useThemeDetector = () => {
+//   const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+//   const [isDarkTheme, setIsDarkTheme] = useState(getCurrentTheme());
+//   const mqListener = (e => {
+//       setIsDarkTheme(e.matches);
+//   });
 
-  const toggleClasses = "text-sm flex items-center px-2 py-2 relative z-10";
+//   useEffect(() => {
+//     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+//     darkThemeMq.addListener(mqListener);
+//     return () => darkThemeMq.removeListener(mqListener);
+//   }, []);
+//   return isDarkTheme;
+// }
+
+export function ModeToggle() {
+  const getCurrentTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const { theme, setTheme } = useTheme();
+  setTheme(getCurrentTheme.matches ? "dark" : "light");
+
+  //update theme based on changes to system/browser theme
+  // useEffect(() => {
+  //   setTheme(getCurrentTheme.matches ? "dark" : "light");
+  // getCurrentTheme.addEventListener;
+  // }, [getCurrentTheme.matches]);
+
+  const toggleClasses =
+    "text-sm text-slate-200 flex items-center px-2 py-2 relative z-10";
 
   return (
     <div className={`w-fit items-center pr-4`}>
-      <div className="relative flex w-fit items-center rounded-full bg-slate-800 dark:bg-slate-200">
+      <div
+        className={`relative flex w-fit items-center rounded-full
+          ${theme === "dark" ? "bg-slate-800" : "bg-slate-800"}`}
+      >
         <button
-          className={`${toggleClasses} ${
-            theme === "light" ? "text-white" : "text-slate-800"
-          }`}
+          className={`${toggleClasses}`}
           onClick={() => {
             setTheme("light");
           }}
@@ -24,9 +49,7 @@ export function ModeToggle() {
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 transition-all" />
         </button>
         <button
-          className={`${toggleClasses} ${
-            theme === "dark" ? "text-white" : "text-slate-200"
-          }`}
+          className={`${toggleClasses}`}
           onClick={() => {
             setTheme("dark");
           }}
