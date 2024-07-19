@@ -20,7 +20,7 @@ const Navbar = () => {
   const toggleNav = () => setExpandNav(!expandNav);
 
   return (
-    <nav className="flex fixed top-0">
+    <nav className="flex fixed top-0 z-10">
       {expandNav ? (
         <motion.div
           className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"

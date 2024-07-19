@@ -12,10 +12,10 @@ export function ModeToggle() {
 
   return (
     <div className={`w-fit items-center pr-4`}>
-      <div className="relative flex w-fit items-center rounded-full">
+      <div className="relative flex w-fit items-center rounded-full bg-slate-800 dark:bg-slate-200">
         <button
           className={`${toggleClasses} ${
-            theme === "light" ? "text-white" : "text-slate-300"
+            theme === "light" ? "text-white" : "text-slate-800"
           }`}
           onClick={() => {
             setTheme("light");
@@ -25,7 +25,7 @@ export function ModeToggle() {
         </button>
         <button
           className={`${toggleClasses} ${
-            theme === "dark" ? "text-white" : "text-slate-800"
+            theme === "dark" ? "text-white" : "text-slate-200"
           }`}
           onClick={() => {
             setTheme("dark");
@@ -34,7 +34,7 @@ export function ModeToggle() {
           <Moon className="h-[1.2rem] w-[1.2rem] scale-100 transition-all" />
         </button>
         <div
-          className={`absolute inset-0 z-0 flex ${
+          className={`absolute inset-0 flex ${
             theme === "dark" ? "justify-end" : "justify-start"
           }`}
         >
