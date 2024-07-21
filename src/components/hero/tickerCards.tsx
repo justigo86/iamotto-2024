@@ -1,7 +1,8 @@
 import React from "react";
-import bgBlue from "/public/blue-view.jpg";
-import bgVercel from "/public/vercel.svg";
-import bgNext from "/public/next.svg";
+import bgCrown from "/public/CrownClothingHomepage.png";
+import bgSmart from "/public/SmartBrainCapture.jpg";
+import bgPen from "/public/PennyGalleryCapture2.jpg";
+import bgRobo from "/public/RoboFriendsCap.jpg";
 
 type CardType = {
   url: string;
@@ -11,34 +12,24 @@ type CardType = {
 
 export const cards: CardType[] = [
   {
-    url: bgBlue.src,
+    url: bgCrown.src,
     title: "Title 1",
     id: 1,
   },
   {
-    url: bgVercel.src,
+    url: bgSmart.src,
     title: "Title 2",
     id: 2,
   },
   {
-    url: bgVercel.src,
+    url: bgPen.src,
     title: "Title 3",
     id: 3,
   },
   {
-    url: bgVercel.src,
+    url: bgRobo.src,
     title: "Title 4",
     id: 4,
-  },
-  {
-    url: bgVercel.src,
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: bgNext.src,
-    title: "Title 6",
-    id: 6,
   },
 ];
 

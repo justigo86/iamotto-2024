@@ -21,25 +21,24 @@ import { motion } from "framer-motion";
 // }
 
 export function ModeToggle() {
-  const getCurrentTheme = window.matchMedia("(prefers-color-scheme: dark)");
   const { theme, setTheme } = useTheme();
-  setTheme(getCurrentTheme.matches ? "dark" : "light");
-
+  // setTheme(getCurrentTheme.matches ? "dark" : "light");
+  console.log("theme1", theme);
   //update theme based on changes to system/browser theme
   // useEffect(() => {
-  //   setTheme(getCurrentTheme.matches ? "dark" : "light");
+  // const getCurrentTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  // setTheme(getCurrentTheme.matches ? "dark" : "light");
   // getCurrentTheme.addEventListener;
-  // }, [getCurrentTheme.matches]);
+  // setTheme("system");
+  //   console.log("theme2", theme);
+  // }, []);
 
   const toggleClasses =
     "text-sm text-slate-200 flex items-center px-2 py-2 relative z-10";
 
   return (
     <div className={`w-fit items-center pr-4`}>
-      <div
-        className={`relative flex w-fit items-center rounded-full
-          ${theme === "dark" ? "bg-slate-800" : "bg-slate-800"}`}
-      >
+      <div className="relative flex w-fit items-center rounded-full bg-slate-800">
         <button
           className={`${toggleClasses}`}
           onClick={() => {
@@ -56,15 +55,13 @@ export function ModeToggle() {
         >
           <Moon className="h-[1.2rem] w-[1.2rem] scale-100 transition-all" />
         </button>
-        <div
-          className={`absolute inset-0 flex ${
-            theme === "dark" ? "justify-end" : "justify-start"
-          }`}
-        >
+        <div className="absolute inset-0 flex justify-start dark:justify-end">
           <motion.span
             layout
             transition={{ type: "spring", damping: 15, stiffness: 250 }}
-            className="h-full w-1/2 rounded-full bg-red-500"
+            className={`h-full w-1/2 rounded-full ${
+              theme === "system" ? "bg-transparent" : "bg-red-500"
+            }`}
           />
         </div>
       </div>
