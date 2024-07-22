@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Ticker } from "../ticker3";
-import { cards, Card } from "./tickerCards";
+import { Ticker } from "../ticker/ticker3";
+import { cards, Card } from "../ticker/tickerCards";
 import bgNaut from "/public/kobby-mendez-d0oYF8hm4GI-unsplash.jpg";
 
 const Hero = () => {
@@ -21,14 +21,14 @@ const Hero = () => {
       <h1 className="text-9xl font-raleway font-bold absolute top-[25%] right-2">
         J_Otto
       </h1>
-      {/* <div className="object-bottom">
+      <div className="object-bottom">
         <h3>Projects</h3>
         <Ticker>
           {cards.map((card) => {
             return <Card key={card.id} card={card} />;
           })}
         </Ticker>
-      </div> */}
+      </div>
     </div>
   );
 };

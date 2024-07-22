@@ -63,7 +63,7 @@ const TickerItem: React.FC<TickerItemProps> = (props) => {
 
   useEffect(() => {
     loopStart();
-  }, []);
+  }, [loopStart]);
 
   return (
     <motion.div className=" flex nowrap" ref={itemRef}>
