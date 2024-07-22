@@ -37,7 +37,7 @@ export const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className="relative h-[20vh] w-[30vw] overflow-hidden bg-neutral-200"
+      className="relative h-[20vh] w-[25vw] overflow-hidden bg-neutral-200 hover:scale-110"
     >
       <div
         style={{
@@ -45,10 +45,10 @@ export const Card = ({ card }: { card: CardType }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="absolute inset-0 transition-transform duration-300 group-hover:scale-110"
+        className="absolute inset-0 transition-transform duration-300"
       ></div>
-      <div className="absolute inset-0 grid place-content-center">
-        <p className="bg-gradient-to-br from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg">
+      <div className="absolute inset-0 grid place-content-center group">
+        <p className="p-8 text-6xl font-black uppercase text-white backdrop-blur-lg group-hover:backdrop-blur-0">
           {card.id}
         </p>
       </div>

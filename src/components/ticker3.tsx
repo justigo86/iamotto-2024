@@ -2,12 +2,11 @@ import React, { useRef, useEffect } from "react";
 import {
   motion,
   useSpring,
-  useTransform,
+  // useTransform,
   // PanInfo,
   MotionValue,
   // useMotionValue
 } from "framer-motion";
-// import normalizeWheel from "normalize-wheel";
 import { useRafLoop } from "react-use";
 import { useWindowSize } from "@react-hook/window-size";
 
@@ -129,6 +128,15 @@ export const Ticker: React.FC<TickerProps> = (props) => {
   //   }, 30);
   // };
 
+  const stopLoop = () => {
+    const stop = 0;
+    speedSpring.set(speed * stop);
+  };
+  const startLoop = () => {
+    const stop = 1;
+    speedSpring.set(speed * stop);
+  };
+
   const loop = () => {
     /**
      * Do nothing if we're slowing down
@@ -176,7 +184,9 @@ export const Ticker: React.FC<TickerProps> = (props) => {
         // ref={constraintsRef}
       />
       <motion.div
-        className="flex items-center"
+        className="flex items-center overflow-hidden"
+        onHoverStart={() => stopLoop()}
+        onHoverEnd={() => startLoop()}
         // ref={ref}
         // style={{ skewX, display: "flex", alignItems: "center", zIndex: 1 }}
         // onWheel={handleOnWheel}
