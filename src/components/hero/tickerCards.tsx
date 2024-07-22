@@ -37,7 +37,7 @@ export const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className="relative h-[20vh] w-[25vw] overflow-hidden bg-neutral-200 hover:scale-110"
+      className="relative h-[20vh] w-[25vw] overflow-hidden bg-neutral-200 hover:scale-110 cursor-pointer"
     >
       <div
         style={{
