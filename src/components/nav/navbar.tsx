@@ -19,6 +19,8 @@ const Navbar = () => {
 
   const toggleNav = () => setExpandNav(!expandNav);
 
+  const buttonClass = "text-2xl pl-4 font-raleway font-bold hover:underline";
+
   return (
     <nav className="flex fixed top-0 z-10">
       {expandNav ? (
@@ -28,16 +30,16 @@ const Navbar = () => {
           initial="hidden"
           animate="visible"
         >
-          <Button variant="link" onClick={toggleNav}>
+          <button className={buttonClass} type="button" onClick={toggleNav}>
             Collapse
-          </Button>
+          </button>
           <NavMenu setExpandNav={setExpandNav} />
         </motion.div>
       ) : (
-        <div className="flex justify-between w-screen h-16">
-          <Button variant="link" onClick={toggleNav}>
+        <div className="flex justify-between w-screen">
+          <button className={buttonClass} type="button" onClick={toggleNav}>
             Menu
-          </Button>
+          </button>
           <ModeToggle />
         </div>
       )}

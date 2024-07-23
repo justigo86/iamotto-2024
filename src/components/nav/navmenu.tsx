@@ -60,7 +60,7 @@ const NavMenu = ({ setExpandNav }: Props) => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className="my-5 text-6xl uppercase font-bold w-fit"
+            className="my-7 text-8xl uppercase font-bold w-fit"
           >
             <Link href={link.path} onClick={toggleNav}>
               <motion.div
