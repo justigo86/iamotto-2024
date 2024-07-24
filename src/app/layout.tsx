@@ -3,6 +3,25 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/navbar";
+import {
+  faB,
+  faCheckSquare,
+  faCoffee,
+  faDatabase,
+  faHouseLaptop,
+  faS,
+  faWindowMaximize,
+} from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+library.add(
+  faB,
+  faS,
+  faHouseLaptop,
+  faCheckSquare,
+  faCoffee,
+  faDatabase,
+  faWindowMaximize
+);
 
 const inter = Inter({ subsets: ["latin"] });
 
