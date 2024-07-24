@@ -17,7 +17,7 @@ library.add(fab, faGithub, faLinkedin);
 
 const Hero = () => {
   return (
-    <div className="overflow-hidden flex flex-col items-end w-screen mr-4">
+    <div className="overflow-hidden flex flex-col gap-4 items-end w-screen mr-4">
       {/* <div
         className="z-0 overflow-hidden invert dark:invert-0"
         style={{

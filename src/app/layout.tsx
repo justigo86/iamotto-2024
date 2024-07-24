@@ -13,6 +13,7 @@ import {
   faWindowMaximize,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { ModeToggle } from "@/components/theme/mode-toggle";
 library.add(
   faB,
   faS,
@@ -45,6 +46,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+          <ModeToggle />
           {children}
         </ThemeProvider>
       </body>

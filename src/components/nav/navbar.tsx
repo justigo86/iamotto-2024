@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { ModeToggle } from "../theme/mode-toggle";
 import NavMenu from "./navmenu";
 import { useState } from "react";
-import { motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 
 const navMenuVariants: Variants = {
   hidden: { height: 0, transition: { duration: 0.5 } },
@@ -12,6 +10,7 @@ const navMenuVariants: Variants = {
     height: "100vh",
     transition: { duration: 0.8, ease: "circInOut" },
   },
+  exit: { height: "0vh", transition: { duration: 0.5, ease: "circInOut" } },
 };
 
 const Navbar = () => {
@@ -23,26 +22,30 @@ const Navbar = () => {
 
   return (
     <nav className="flex fixed top-0 z-10">
-      {expandNav ? (
-        <motion.div
-          className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
-          variants={navMenuVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <button className={buttonClass} type="button" onClick={toggleNav}>
-            Collapse
-          </button>
-          <NavMenu setExpandNav={setExpandNav} />
-        </motion.div>
-      ) : (
-        <div className="flex justify-between w-screen">
-          <button className={buttonClass} type="button" onClick={toggleNav}>
-            Menu
-          </button>
-          <ModeToggle />
-        </div>
-      )}
+      <AnimatePresence>
+        {expandNav ? (
+          <motion.div
+            key="menu"
+            // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
+            className="bg-transparent h-screen w-screen overflow-hidden"
+            initial={{ height: 0 }}
+            animate={{ height: "100vh" }}
+            // exit={{ height: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <button className={buttonClass} type="button" onClick={toggleNav}>
+              Collapse
+            </button>
+            <NavMenu setExpandNav={setExpandNav} />
+          </motion.div>
+        ) : (
+          <div className="flex justify-between w-screen">
+            <button className={buttonClass} type="button" onClick={toggleNav}>
+              Menu
+            </button>
+          </div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

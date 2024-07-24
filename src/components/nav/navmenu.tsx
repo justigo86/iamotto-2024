@@ -37,27 +37,67 @@ const links: LinkInterface[] = [
 ];
 
 const navMenuItemVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
+  navHidden: { opacity: 0 },
+  navVisible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.2 },
+  },
+  navExit: {
+    opacity: 0,
   },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 20,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+  exit: { opacity: 0, y: -20 },
 };
+
+// const itemVariants: Variants = {
+//   hidden: { opacity: 0, y: -20 },
+//   visible: {
+//     opacity: 1,
+//     y: 20,
+//     transition: {
+//       staggerChildren: 0.2,
+//       delayChildren: 0.2,
+//       staggerDirection: 1,
+//     },
+//   },
+//   exit: {
+//     opacity: 0,
+//     y: -20,
+//     transition: {
+//       staggerChildren: 0.2,
+//       delayChildren: 0.2,
+//       staggerDirection: -1,
+//     },
+//   },
+// };
 
 const NavMenu = ({ setExpandNav }: Props) => {
   const toggleNav = () => setExpandNav(!setExpandNav);
 
   return (
     <motion.div
+      key="menu"
       className="flex flex-col mx-4 mt-10"
       variants={navMenuItemVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
+      transition={{
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+        staggerDirection: 1,
+      }}
     >
       {links.map((link: LinkInterface) => {
         return (
