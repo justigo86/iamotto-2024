@@ -20,14 +20,18 @@ const links: LinkInterface[] = [
   },
   {
     id: 2,
-    path: "projects",
+    path: "experience",
   },
   {
     id: 3,
-    path: "about",
+    path: "projects",
   },
   {
     id: 4,
+    path: "about",
+  },
+  {
+    id: 5,
     path: "connect",
   },
 ];
@@ -60,7 +64,7 @@ const NavMenu = ({ setExpandNav }: Props) => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className="my-7 text-8xl uppercase font-bold w-fit"
+            className="my-7 text-7xl uppercase font-bold w-fit"
           >
             <Link href={link.path} onClick={toggleNav}>
               <motion.div

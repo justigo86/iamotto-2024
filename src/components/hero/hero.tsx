@@ -17,7 +17,7 @@ library.add(fab, faGithub, faLinkedin);
 
 const Hero = () => {
   return (
-    <div className="overflow-hidden flex flex-col">
+    <div className="overflow-hidden flex flex-col items-end w-screen mr-4">
       {/* <div
         className="z-0 overflow-hidden invert dark:invert-0"
         style={{
@@ -30,18 +30,18 @@ const Hero = () => {
       ></div> */}
       <h1 className="text-9xl font-raleway font-bold">J_Otto</h1>
       <h2 className="text-3xl font-raleway font-bold">Full-Stack Engineer</h2>
-      <div>
+      <div className="flex gap-2">
         <FontAwesomeIcon icon={["fab", "github"]} className="text-3xl" />
         <FontAwesomeIcon icon={["fab", "linkedin"]} className="text-3xl" />
       </div>
-      <div className="object-bottom">
+      {/* <div>
         <h3>Projects</h3>
         <Ticker>
           {cards.map((card) => {
             return <Card key={card.id} card={card} />;
           })}
         </Ticker>
-      </div>
+      </div> */}
     </div>
   );
 };
