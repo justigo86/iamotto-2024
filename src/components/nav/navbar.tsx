@@ -21,7 +21,7 @@ const Navbar = () => {
   const buttonClass = "text-2xl pl-4 font-raleway font-bold hover:underline";
 
   return (
-    <nav className="flex fixed top-0 z-10">
+    <nav className="flex fixed top-0 z-0">
       <AnimatePresence>
         {expandNav ? (
           <motion.div
