@@ -11,28 +11,39 @@ type Props = {
 interface LinkInterface {
   id: number;
   path: string;
+  shown: boolean;
 }
 
 const links: LinkInterface[] = [
   {
     id: 1,
     path: "home",
+    shown: true,
   },
   {
     id: 2,
     path: "experience",
+    shown: true,
+  },
+  {
+    id: 21,
+    path: "experienceExpand",
+    shown: false,
   },
   {
     id: 3,
     path: "projects",
+    shown: true,
   },
   {
     id: 4,
     path: "about",
+    shown: true,
   },
   {
     id: 5,
     path: "connect",
+    shown: true,
   },
 ];
 
@@ -85,6 +96,15 @@ const itemVariants: Variants = {
 const NavMenu = ({ setExpandNav }: Props) => {
   const toggleNav = () => setExpandNav(!setExpandNav);
 
+  const expandSection = (id: number) => {
+    const link = links.find(
+      (link) => link.id.toString() === id.toString() + "1"
+    );
+    if (link) {
+      link.shown = !link.shown;
+    }
+  };
+
   return (
     <motion.div
       key="menu"
@@ -104,61 +124,64 @@ const NavMenu = ({ setExpandNav }: Props) => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className="my-7 text-7xl uppercase font-bold w-fit"
+            className={`my-7 text-7xl uppercase font-bold w-fit ${
+              link.shown ? "block" : "hidden"
+            }`}
           >
-            <Link href={link.path} onClick={toggleNav}>
-              <motion.div
-                className="relative block overflow-hidden whitespace-nowrap"
-                variants={itemVariants}
-                initial="initial"
-                whileHover="hovered"
-              >
-                <motion.div>
-                  <span className="text-lg">0{link.id}</span>
-                  {link.path.split("").map((letter, index) => {
-                    return (
-                      <motion.span
-                        key={index}
-                        className="inline-block"
-                        variants={{
-                          initial: { y: 0 },
-                          hovered: { y: "-100%" },
-                        }}
-                        transition={{
-                          duration: 0.2,
-                          delay: 0.03 * index,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        {letter}
-                      </motion.span>
-                    );
-                  })}
-                </motion.div>
-                <motion.div className="absolute inset-0">
-                  <span className="text-lg">0{link.id}</span>
-                  {link.path.split("").map((letter, index) => {
-                    return (
-                      <motion.span
-                        key={index}
-                        className="inline-block"
-                        variants={{
-                          initial: { y: "100%" },
-                          hovered: { y: 0 },
-                        }}
-                        transition={{
-                          duration: 0.2,
-                          delay: 0.03 * index,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        {letter}
-                      </motion.span>
-                    );
-                  })}
-                </motion.div>
+            {/* <Link href={link.path}> */}
+            <motion.div
+              className="relative block overflow-hidden whitespace-nowrap cursor-pointer"
+              variants={itemVariants}
+              initial="initial"
+              whileHover="hovered"
+              onClick={() => expandSection(link.id)}
+            >
+              <motion.div>
+                <span className="text-lg">0{link.id}</span>
+                {link.path.split("").map((letter, index) => {
+                  return (
+                    <motion.span
+                      key={index}
+                      className="inline-block"
+                      variants={{
+                        initial: { y: 0 },
+                        hovered: { y: "-100%" },
+                      }}
+                      transition={{
+                        duration: 0.2,
+                        delay: 0.03 * index,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {letter}
+                    </motion.span>
+                  );
+                })}
               </motion.div>
-            </Link>
+              <motion.div className="absolute inset-0">
+                <span className="text-lg">0{link.id}</span>
+                {link.path.split("").map((letter, index) => {
+                  return (
+                    <motion.span
+                      key={index}
+                      className="inline-block"
+                      variants={{
+                        initial: { y: "100%" },
+                        hovered: { y: 0 },
+                      }}
+                      transition={{
+                        duration: 0.2,
+                        delay: 0.03 * index,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      {letter}
+                    </motion.span>
+                  );
+                })}
+              </motion.div>
+            </motion.div>
+            {/* </Link> */}
           </motion.div>
         );
       })}
