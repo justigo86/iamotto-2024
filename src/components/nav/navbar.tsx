@@ -4,14 +4,14 @@ import NavMenu from "./navmenu";
 import { useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 
-const navMenuVariants: Variants = {
-  hidden: { height: 0, transition: { duration: 0.5 } },
-  visible: {
-    height: "100vh",
-    transition: { duration: 0.8, ease: "circInOut" },
-  },
-  exit: { height: "0vh", transition: { duration: 0.5, ease: "circInOut" } },
-};
+// const navMenuVariants: Variants = {
+//   hidden: { height: 0, transition: { duration: 0.5 } },
+//   visible: {
+//     height: "100vh",
+//     transition: { duration: 0.8, ease: "circInOut" },
+//   },
+//   exit: { height: "0vh", transition: { duration: 0.5, ease: "circInOut" } },
+// };
 
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
@@ -36,7 +36,8 @@ const Navbar = () => {
             <button className={buttonClass} type="button" onClick={toggleNav}>
               Collapse
             </button>
-            <NavMenu setExpandNav={setExpandNav} />
+            {/* <NavMenu setExpandNav={setExpandNav} /> */}
+            <NavMenu />
           </motion.div>
         ) : (
           <div className="flex justify-between w-screen">

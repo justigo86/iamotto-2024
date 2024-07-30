@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
 type Props = {
@@ -93,8 +93,9 @@ const itemVariants: Variants = {
 //   },
 // };
 
-const NavMenu = ({ setExpandNav }: Props) => {
-  const toggleNav = () => setExpandNav(!setExpandNav);
+// const NavMenu = ({ setExpandNav }: Props) => {
+const NavMenu = () => {
+  // const toggleNav = () => setExpandNav(!setExpandNav);
 
   const expandSection = (id: number) => {
     const link = links.find(

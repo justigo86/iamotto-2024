@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Ticker } from "../ticker/ticker3";
-import { cards, Card } from "../ticker/tickerCards";
-import bgNaut from "/public/kobby-mendez-d0oYF8hm4GI-unsplash.jpg";
+// import { Ticker } from "../ticker/ticker3";
+// import { cards, Card } from "../ticker/tickerCards";
+// import bgNaut from "/public/kobby-mendez-d0oYF8hm4GI-unsplash.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
