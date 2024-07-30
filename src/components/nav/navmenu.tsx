@@ -3,14 +3,16 @@
 import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import { Ticker } from "../ticker/ticker3";
+import { cards, Card } from "../ticker/tickerCards";
 
-type Props = {
-  setExpandNav: React.Dispatch<React.SetStateAction<boolean>>;
-};
+// type Props = {
+//   setExpandNav: React.Dispatch<React.SetStateAction<boolean>>;
+// };
 
 interface LinkInterface {
   id: number;
-  path: string;
+  path: string | React.ReactNode;
   shown: boolean;
 }
 
@@ -27,7 +29,13 @@ const links: LinkInterface[] = [
   },
   {
     id: 21,
-    path: "experienceExpand",
+    path: (
+      <Ticker>
+        {cards.map((card) => {
+          return <Card key={card.id} card={card} />;
+        })}
+      </Ticker>
+    ),
     shown: false,
   },
   {
@@ -96,15 +104,28 @@ const itemVariants: Variants = {
 // const NavMenu = ({ setExpandNav }: Props) => {
 const NavMenu = () => {
   // const toggleNav = () => setExpandNav(!setExpandNav);
+  const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
 
-  const expandSection = (id: number) => {
-    const link = links.find(
-      (link) => link.id.toString() === id.toString() + "1"
-    );
-    if (link) {
-      link.shown = !link.shown;
-    }
+  const toggleShown = (id: number) => {
+    setLinkState((prev) => {
+      return prev.map((link) => {
+        if (link.id.toString() === id.toString() + "1") {
+          return { ...link, shown: !link.shown };
+        } else {
+          return link;
+        }
+      });
+    });
   };
+
+  // const expandSection = (id: number) => {
+  //   const link = links.find(
+  //     (link) => link.id.toString() === id.toString() + "1"
+  //   );
+  //   if (link) {
+  //     link.shown = !link.shown;
+  //   }
+  // };
 
   return (
     <motion.div
@@ -120,7 +141,7 @@ const NavMenu = () => {
         staggerDirection: 1,
       }}
     >
-      {links.map((link: LinkInterface) => {
+      {linkState.map((link: LinkInterface) => {
         return (
           <motion.div
             key={link.id}
@@ -135,52 +156,60 @@ const NavMenu = () => {
               variants={itemVariants}
               initial="initial"
               whileHover="hovered"
-              onClick={() => expandSection(link.id)}
+              onClick={() => toggleShown(link.id)}
             >
-              <motion.div>
-                <span className="text-lg">0{link.id}</span>
-                {link.path.split("").map((letter, index) => {
-                  return (
-                    <motion.span
-                      key={index}
-                      className="inline-block"
-                      variants={{
-                        initial: { y: 0 },
-                        hovered: { y: "-100%" },
-                      }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.03 * index,
-                        ease: "easeInOut",
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  );
-                })}
-              </motion.div>
-              <motion.div className="absolute inset-0">
-                <span className="text-lg">0{link.id}</span>
-                {link.path.split("").map((letter, index) => {
-                  return (
-                    <motion.span
-                      key={index}
-                      className="inline-block"
-                      variants={{
-                        initial: { y: "100%" },
-                        hovered: { y: 0 },
-                      }}
-                      transition={{
-                        duration: 0.2,
-                        delay: 0.03 * index,
-                        ease: "easeInOut",
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  );
-                })}
-              </motion.div>
+              {typeof link.path === "string" ? (
+                <motion.div>
+                  <span className="text-lg">0{link.id}</span>
+                  {link.path.split("").map((letter, index) => {
+                    return (
+                      <motion.span
+                        key={index}
+                        className="inline-block"
+                        variants={{
+                          initial: { y: 0 },
+                          hovered: { y: "-100%" },
+                        }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.03 * index,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        {letter}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+              ) : (
+                <motion.div>{link.path}</motion.div>
+              )}
+              {typeof link.path === "string" ? (
+                <motion.div className="absolute inset-0">
+                  <span className="text-lg">0{link.id}</span>
+                  {link.path.split("").map((letter, index) => {
+                    return (
+                      <motion.span
+                        key={index}
+                        className="inline-block"
+                        variants={{
+                          initial: { y: "100%" },
+                          hovered: { y: 0 },
+                        }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.03 * index,
+                          ease: "easeInOut",
+                        }}
+                      >
+                        {letter}
+                      </motion.span>
+                    );
+                  })}
+                </motion.div>
+              ) : (
+                ""
+              )}
             </motion.div>
             {/* </Link> */}
           </motion.div>
