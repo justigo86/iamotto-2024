@@ -37,7 +37,7 @@ export const Card = ({ card }: { card: CardType }) => {
   return (
     <div
       key={card.id}
-      className="relative h-[20vh] w-[25vw] overflow-hidden bg-neutral-200 hover:scale-110 cursor-pointer grayscale hover:grayscale-0"
+      className="relative h-[50vh] w-[40vw] lg:w-[25vw] overflow-hidden bg-transparenthover:scale-110 cursor-pointer grayscale hover:grayscale-0"
     >
       <div
         style={{
@@ -45,7 +45,7 @@ export const Card = ({ card }: { card: CardType }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="absolute inset-0 transition-transform duration-300"
+        className="absolute m-auto inset-0 transition-transform duration-300 rounded h-[45vh] w-[35vw] lg:w-[20vw]"
       ></div>
       <div className="absolute inset-0 grid place-content-center group">
         <p className="p-8 text-6xl font-black uppercase text-white backdrop-blur-lg group-hover:backdrop-blur-0">

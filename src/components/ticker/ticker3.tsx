@@ -82,7 +82,7 @@ type TickerProps = {
 
 export const Ticker: React.FC<TickerProps> = (props) => {
   const {
-    speed = 1,
+    speed = 2,
     threshold = 0.014,
     // wheelFactor = 1.8,
     children,
