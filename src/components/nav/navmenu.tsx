@@ -44,6 +44,17 @@ const links: LinkInterface[] = [
     shown: true,
   },
   {
+    id: 31,
+    path: (
+      <Ticker>
+        {cards.map((card) => {
+          return <Card key={card.id} card={card} />;
+        })}
+      </Ticker>
+    ),
+    shown: false,
+  },
+  {
     id: 4,
     path: "about",
     shown: true,
