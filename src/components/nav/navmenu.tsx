@@ -3,8 +3,8 @@
 import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
-import { Ticker } from "../ticker/ticker3";
-import { cards, Card } from "../ticker/tickerCards";
+// import { Ticker } from "../ticker/ticker3";
+// import { cards, Card } from "../ticker/tickerCards";
 
 // type Props = {
 //   setExpandNav: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +14,7 @@ interface LinkInterface {
   id: number;
   path: string | React.ReactNode;
   shown: boolean;
+  underlined: boolean;
 }
 
 const links: LinkInterface[] = [
@@ -21,49 +22,43 @@ const links: LinkInterface[] = [
     id: 1,
     path: "home",
     shown: true,
+    underlined: false,
   },
   {
     id: 2,
     path: "experience",
     shown: true,
-  },
-  {
-    id: 21,
-    path: (
-      <Ticker>
-        {cards.map((card) => {
-          return <Card key={card.id} card={card} />;
-        })}
-      </Ticker>
-    ),
-    shown: false,
+    underlined: false,
   },
   {
     id: 3,
     path: "projects",
     shown: true,
-  },
-  {
-    id: 31,
-    path: (
-      <Ticker>
-        {cards.map((card) => {
-          return <Card key={card.id} card={card} />;
-        })}
-      </Ticker>
-    ),
-    shown: false,
+    underlined: false,
   },
   {
     id: 4,
     path: "about",
     shown: true,
+    underlined: false,
   },
   {
     id: 5,
     path: "connect",
     shown: true,
+    underlined: false,
   },
+  // {
+  //   id: 31,
+  //   path: (
+  //     <Ticker>
+  //       {cards.map((card) => {
+  //         return <Card key={card.id} card={card} />;
+  //       })}
+  //     </Ticker>
+  //   ),
+  //   shown: false,
+  // },
 ];
 
 const navMenuItemVariants: Variants = {
@@ -116,17 +111,25 @@ const itemVariants: Variants = {
 const NavMenu = () => {
   // const toggleNav = () => setExpandNav(!setExpandNav);
   const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
+  const [updateUI, setUpdateUI] = React.useState(false);
 
   const toggleShown = (id: number) => {
+    setUpdateUI((prev) => {
+      return !prev;
+    });
     setLinkState((prev) => {
       return prev.map((link) => {
+        if (link.id === id) {
+          return { ...link, underlined: !link.underlined };
+        }
         if (link.id.toString() === id.toString() + "1") {
-          return { ...link, shown: !link.shown };
+          return { ...link, shown: !link.shown, underlined: !link.underlined };
         } else {
           return link;
         }
       });
     });
+    console.log(linkState);
   };
 
   // const expandSection = (id: number) => {
@@ -141,7 +144,11 @@ const NavMenu = () => {
   return (
     <motion.div
       key="menu"
-      className="flex flex-col mx-4 mt-10"
+      className={`flex ${
+        updateUI === true
+          ? "text-stone-950 text-3xl gap-3"
+          : "text-slate-50 text-7xl flex-col"
+      } mx-4 mt-10`}
       variants={navMenuItemVariants}
       initial="hidden"
       animate="visible"
@@ -157,13 +164,15 @@ const NavMenu = () => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className={`my-7 text-7xl uppercase font-bold w-fit ${
+            className={`my-7 uppercase font-bold w-fit ${
               link.shown ? "block" : "hidden"
             }`}
           >
             {/* <Link href={link.path}> */}
             <motion.div
-              className="relative block overflow-hidden whitespace-nowrap cursor-pointer"
+              className={`relative block overflow-hidden whitespace-nowrap cursor-pointer ${
+                link.underlined ? "underline" : ""
+              }`}
               variants={itemVariants}
               initial="initial"
               whileHover="hovered"

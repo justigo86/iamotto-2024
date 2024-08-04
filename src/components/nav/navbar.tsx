@@ -27,7 +27,7 @@ const Navbar = () => {
           <motion.div
             key="menu"
             // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
-            className="bg-transparent h-screen w-screen overflow-hidden"
+            className="bg-transparent h-screen overflow-hidden w-min"
             initial={{ height: 0 }}
             animate={{ height: "100vh" }}
             // exit={{ height: 0 }}

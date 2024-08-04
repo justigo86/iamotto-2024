@@ -31,8 +31,14 @@ const Hero = () => {
       <h1 className="text-9xl font-raleway font-bold">J_Otto</h1>
       <h2 className="text-3xl font-raleway font-bold">Full-Stack Engineer</h2>
       <div className="flex gap-2">
-        <FontAwesomeIcon icon={["fab", "github"]} className="text-3xl" />
-        <FontAwesomeIcon icon={["fab", "linkedin"]} className="text-3xl" />
+        <FontAwesomeIcon
+          icon={["fab", "github"]}
+          className="text-3xl cursor-pointer hover:text-red-500"
+        />
+        <FontAwesomeIcon
+          icon={["fab", "linkedin"]}
+          className="text-3xl cursor-pointer hover:text-red-500"
+        />
       </div>
       {/* <div>
         <h3>Projects</h3>
