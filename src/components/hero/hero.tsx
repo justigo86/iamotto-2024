@@ -1,13 +1,8 @@
-"use client";
-
 import React from "react";
 // import { Ticker } from "../ticker/ticker3";
 // import { cards, Card } from "../ticker/tickerCards";
 // import bgNaut from "/public/kobby-mendez-d0oYF8hm4GI-unsplash.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab, faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-library.add(fab, faGithub, faLinkedin);
+import HeroIcons from "./heroIcons";
 
 //Notes about font-awesome - more complicated than it should be
 //but necessary because brand icons are depreciating with other icon libraries
@@ -30,16 +25,7 @@ const Hero = () => {
       ></div> */}
       <h1 className="text-9xl font-raleway font-bold">J_Otto</h1>
       <h2 className="text-3xl font-raleway font-bold">Full-Stack Engineer</h2>
-      <div className="flex gap-2">
-        <FontAwesomeIcon
-          icon={["fab", "github"]}
-          className="text-3xl cursor-pointer hover:text-red-500"
-        />
-        <FontAwesomeIcon
-          icon={["fab", "linkedin"]}
-          className="text-3xl cursor-pointer hover:text-red-500"
-        />
-      </div>
+      <HeroIcons />
       {/* <div>
         <h3>Projects</h3>
         <Ticker>

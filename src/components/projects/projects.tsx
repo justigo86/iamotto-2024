@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
@@ -13,7 +11,7 @@ const navMenuVariants: Variants = {
   },
 };
 
-const ProjectsPage = (props: Props) => {
+const Projects = (props: Props) => {
   return (
     <motion.div
       className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden"
@@ -25,4 +23,4 @@ const ProjectsPage = (props: Props) => {
   );
 };
 
-export default ProjectsPage;
+export default Projects;
