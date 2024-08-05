@@ -14,7 +14,7 @@ interface LinkInterface {
   id: number;
   path: string | React.ReactNode;
   shown: boolean;
-  underlined: boolean;
+  // underlined: boolean;
 }
 
 const links: LinkInterface[] = [
@@ -22,31 +22,31 @@ const links: LinkInterface[] = [
     id: 1,
     path: "home",
     shown: true,
-    underlined: false,
+    // underlined: false,
   },
   {
     id: 2,
     path: "experience",
     shown: true,
-    underlined: false,
+    // underlined: false,
   },
   {
     id: 3,
     path: "projects",
     shown: true,
-    underlined: false,
+    // underlined: false,
   },
   {
     id: 4,
     path: "about",
     shown: true,
-    underlined: false,
+    // underlined: false,
   },
   {
     id: 5,
     path: "connect",
     shown: true,
-    underlined: false,
+    // underlined: false,
   },
   // {
   //   id: 31,
@@ -120,10 +120,14 @@ const NavMenu = () => {
     setLinkState((prev) => {
       return prev.map((link) => {
         if (link.id === id) {
-          return { ...link, underlined: !link.underlined };
+          // return { ...link, underlined: !link.underlined };
         }
         if (link.id.toString() === id.toString() + "1") {
-          return { ...link, shown: !link.shown, underlined: !link.underlined };
+          return {
+            ...link,
+            shown: !link.shown,
+            // underlined: !link.underlined
+          };
         } else {
           return link;
         }
@@ -144,11 +148,9 @@ const NavMenu = () => {
   return (
     <motion.div
       key="menu"
-      className={`flex ${
-        updateUI === true
-          ? "text-stone-950 text-3xl gap-3"
-          : "text-slate-50 text-7xl flex-col"
-      } mx-4 mt-10`}
+      className={`flex mx-4 mt-10 ${
+        updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
+      }`}
       variants={navMenuItemVariants}
       initial="hidden"
       animate="visible"
@@ -170,9 +172,7 @@ const NavMenu = () => {
           >
             {/* <Link href={link.path}> */}
             <motion.div
-              className={`relative block overflow-hidden whitespace-nowrap cursor-pointer ${
-                link.underlined ? "underline" : ""
-              }`}
+              className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
               variants={itemVariants}
               initial="initial"
               whileHover="hovered"

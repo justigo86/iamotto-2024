@@ -23,7 +23,7 @@ import { motion } from "framer-motion";
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
   // setTheme(getCurrentTheme.matches ? "dark" : "light");
-  console.log("theme1", theme);
+  // console.log("theme1", theme);
   //update theme based on changes to system/browser theme
   // useEffect(() => {
   // const getCurrentTheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -37,7 +37,7 @@ export function ModeToggle() {
     "text-sm text-slate-200 flex items-center px-2 py-2 relative z-10";
 
   return (
-    <div className="w-fit items-center mr-4 absolute right-0 z-10">
+    <div className="w-fit items-center mr-4 mt-1 absolute right-0 top-0 z-10">
       <div className="relative flex w-fit items-center rounded-full bg-slate-800">
         <button
           className={`${toggleClasses}`}

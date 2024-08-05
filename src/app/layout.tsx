@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import Navbar from "@/components/nav/navbar";
+// import Navbar from "@/components/nav/navbar";
 import {
   faB,
   faCheckSquare,
@@ -13,7 +13,7 @@ import {
   faWindowMaximize,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { ModeToggle } from "@/components/theme/mode-toggle";
+// import { ModeToggle } from "@/components/theme/mode-toggle";
 library.add(
   faB,
   faS,
@@ -45,8 +45,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <ModeToggle />
+          {/* <Navbar />
+          <ModeToggle /> */}
           {children}
         </ThemeProvider>
       </body>
