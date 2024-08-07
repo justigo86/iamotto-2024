@@ -3,6 +3,7 @@
 import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 // import { Ticker } from "../ticker/ticker3";
 // import { cards, Card } from "../ticker/tickerCards";
 
@@ -12,7 +13,7 @@ import { motion, Variants } from "framer-motion";
 
 interface LinkInterface {
   id: number;
-  path: string | React.ReactNode;
+  path: string;
   shown: boolean;
   // underlined: boolean;
 }
@@ -170,68 +171,68 @@ const NavMenu = () => {
               link.shown ? "block" : "hidden"
             }`}
           >
-            {/* <Link href={link.path}> */}
-            <motion.div
-              className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
-              variants={itemVariants}
-              initial="initial"
-              whileHover="hovered"
-              onClick={() => toggleShown(link.id)}
-            >
-              {typeof link.path === "string" ? (
-                <motion.div>
-                  <span className="text-lg">0{link.id}</span>
-                  {link.path.split("").map((letter, index) => {
-                    return (
-                      <motion.span
-                        key={index}
-                        className="inline-block"
-                        variants={{
-                          initial: { y: 0 },
-                          hovered: { y: "-100%" },
-                        }}
-                        transition={{
-                          duration: 0.2,
-                          delay: 0.03 * index,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        {letter}
-                      </motion.span>
-                    );
-                  })}
-                </motion.div>
-              ) : (
-                <motion.div>{link.path}</motion.div>
-              )}
-              {typeof link.path === "string" ? (
-                <motion.div className="absolute inset-0">
-                  <span className="text-lg">0{link.id}</span>
-                  {link.path.split("").map((letter, index) => {
-                    return (
-                      <motion.span
-                        key={index}
-                        className="inline-block"
-                        variants={{
-                          initial: { y: "100%" },
-                          hovered: { y: 0 },
-                        }}
-                        transition={{
-                          duration: 0.2,
-                          delay: 0.03 * index,
-                          ease: "easeInOut",
-                        }}
-                      >
-                        {letter}
-                      </motion.span>
-                    );
-                  })}
-                </motion.div>
-              ) : (
-                ""
-              )}
-            </motion.div>
-            {/* </Link> */}
+            <Link href={link.path}>
+              <motion.div
+                className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
+                variants={itemVariants}
+                initial="initial"
+                whileHover="hovered"
+                onClick={() => toggleShown(link.id)}
+              >
+                {typeof link.path === "string" ? (
+                  <motion.div>
+                    <span className="text-lg">0{link.id}</span>
+                    {link.path.split("").map((letter, index) => {
+                      return (
+                        <motion.span
+                          key={index}
+                          className="inline-block"
+                          variants={{
+                            initial: { y: 0 },
+                            hovered: { y: "-100%" },
+                          }}
+                          transition={{
+                            duration: 0.2,
+                            delay: 0.03 * index,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          {letter}
+                        </motion.span>
+                      );
+                    })}
+                  </motion.div>
+                ) : (
+                  <motion.div>{link.path}</motion.div>
+                )}
+                {typeof link.path === "string" ? (
+                  <motion.div className="absolute inset-0">
+                    <span className="text-lg">0{link.id}</span>
+                    {link.path.split("").map((letter, index) => {
+                      return (
+                        <motion.span
+                          key={index}
+                          className="inline-block"
+                          variants={{
+                            initial: { y: "100%" },
+                            hovered: { y: 0 },
+                          }}
+                          transition={{
+                            duration: 0.2,
+                            delay: 0.03 * index,
+                            ease: "easeInOut",
+                          }}
+                        >
+                          {letter}
+                        </motion.span>
+                      );
+                    })}
+                  </motion.div>
+                ) : (
+                  ""
+                )}
+              </motion.div>
+            </Link>
           </motion.div>
         );
       })}

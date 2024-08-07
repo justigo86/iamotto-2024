@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-// import Navbar from "@/components/nav/navbar";
+import Navbar from "@/components/nav/navbar";
+import { ModeToggle } from "@/components/theme/mode-toggle";
+
 // import {
 //   faB,
 //   faCheckSquare,
@@ -45,8 +47,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <Navbar />
-          <ModeToggle /> */}
+          <Navbar />
+          <ModeToggle />
           {children}
         </ThemeProvider>
       </body>

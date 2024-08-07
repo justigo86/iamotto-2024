@@ -2,7 +2,7 @@ import React from "react";
 // import { Ticker } from "../ticker/ticker3";
 // import { cards, Card } from "../ticker/tickerCards";
 // import bgNaut from "/public/kobby-mendez-d0oYF8hm4GI-unsplash.jpg";
-import HeroIcons from "./heroIcons";
+import HeroIcons from "../../components/hero/heroIcons";
 
 //Notes about font-awesome - more complicated than it should be
 //but necessary because brand icons are depreciating with other icon libraries
@@ -10,7 +10,7 @@ import HeroIcons from "./heroIcons";
 //then import each icon type (faGithub, faLinkedin, etc) separately using library.add()
 //then use icon={["library", "icon"]} in FontAwesomeIcon
 
-const Hero = () => {
+const Page = () => {
   return (
     <div className="overflow-hidden flex flex-col gap-4 items-end w-screen mr-4">
       {/* <div
@@ -38,4 +38,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Page;
