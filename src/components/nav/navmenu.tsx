@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
@@ -15,6 +13,7 @@ interface LinkInterface {
   id: number;
   path: string;
   shown: boolean;
+  uiOrientation: string;
   // underlined: boolean;
 }
 
@@ -23,30 +22,35 @@ const links: LinkInterface[] = [
     id: 1,
     path: "home",
     shown: true,
+    uiOrientation: "vertical",
     // underlined: false,
   },
   {
     id: 2,
     path: "experience",
     shown: true,
+    uiOrientation: "horizontal",
     // underlined: false,
   },
   {
     id: 3,
     path: "projects",
     shown: true,
+    uiOrientation: "horizontal",
     // underlined: false,
   },
   {
     id: 4,
     path: "about",
     shown: true,
+    uiOrientation: "horizontal",
     // underlined: false,
   },
   {
     id: 5,
     path: "connect",
     shown: true,
+    uiOrientation: "horizontal",
     // underlined: false,
   },
   // {
@@ -109,33 +113,42 @@ const itemVariants: Variants = {
 // };
 
 // const NavMenu = ({ setExpandNav }: Props) => {
-const NavMenu = () => {
+const NavMenu = ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
   // const toggleNav = () => setExpandNav(!setExpandNav);
-  const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
-  const [updateUI, setUpdateUI] = React.useState(false);
+  // const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
+  // const [updateUI, setUpdateUI] = React.useState(false);
+  // const uiOrientation = searchParams?.ui;
+  const [uiOrientation, setUiOrientation] = React.useState(
+    searchParams?.ui || "vertical"
+  );
+  console.log(uiOrientation);
 
-  const toggleShown = (id: number) => {
-    setUpdateUI((prev) => {
-      return !prev;
-    });
-    setLinkState((prev) => {
-      return prev.map((link) => {
-        if (link.id === id) {
-          // return { ...link, underlined: !link.underlined };
-        }
-        if (link.id.toString() === id.toString() + "1") {
-          return {
-            ...link,
-            shown: !link.shown,
-            // underlined: !link.underlined
-          };
-        } else {
-          return link;
-        }
-      });
-    });
-    console.log(linkState);
-  };
+  // const toggleShown = (id: number) => {
+  //   setUpdateUI((prev) => {
+  //     return !prev;
+  //   });
+  // setLinkState((prev) => {
+  //   return prev.map((link) => {
+  //     if (link.id === id) {
+  // return { ...link, underlined: !link.underlined };
+  // }
+  // if (link.id.toString() === id.toString() + "1") {
+  //   return {
+  //     ...link,
+  //     shown: !link.shown,
+  // underlined: !link.underlined
+  //       };
+  //     } else {
+  //       return link;
+  //     }
+  //   });
+  // });
+  // console.log(linkState);
+  // };
 
   // const expandSection = (id: number) => {
   //   const link = links.find(
@@ -150,7 +163,8 @@ const NavMenu = () => {
     <motion.div
       key="menu"
       className={`flex mx-4 mt-10 ${
-        updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
+        // updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
+        uiOrientation === "horizontal" ? "text-3xl gap-3" : "text-7xl flex-col"
       }`}
       variants={navMenuItemVariants}
       initial="hidden"
@@ -162,7 +176,7 @@ const NavMenu = () => {
         staggerDirection: 1,
       }}
     >
-      {linkState.map((link: LinkInterface) => {
+      {links.map((link: LinkInterface) => {
         return (
           <motion.div
             key={link.id}
@@ -171,13 +185,13 @@ const NavMenu = () => {
               link.shown ? "block" : "hidden"
             }`}
           >
-            <Link href={link.path}>
+            <Link href={`${link.path}?ui=${link.uiOrientation}`}>
               <motion.div
                 className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
                 variants={itemVariants}
                 initial="initial"
                 whileHover="hovered"
-                onClick={() => toggleShown(link.id)}
+                onClick={() => setUiOrientation(link.uiOrientation)}
               >
                 {typeof link.path === "string" ? (
                   <motion.div>
