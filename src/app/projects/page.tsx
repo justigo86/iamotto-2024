@@ -1,3 +1,5 @@
+import { Ticker } from "@/components/ticker/ticker3";
+import { cards, Card } from "@/components/ticker/tickerCards";
 import React from "react";
 // import { motion, Variants } from "framer-motion";
 
@@ -22,8 +24,12 @@ const Page = (props: Props) => {
   //   </motion.div>
   // );
   return (
-    <div className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden">
-      Projects
+    <div className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden flex justify-center">
+      <Ticker>
+        {cards.map((card) => {
+          return <Card key={card.id} card={card} />;
+        })}
+      </Ticker>
     </div>
   );
 };
