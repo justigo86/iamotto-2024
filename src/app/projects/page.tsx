@@ -13,7 +13,7 @@ type Props = {};
 //   },
 // };
 
-const Page = (props: Props) => {
+const Projects = (props: Props) => {
   // return (
   //   <motion.div
   //     className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden"
@@ -34,4 +34,4 @@ const Page = (props: Props) => {
   );
 };
 
-export default Page;
+export default Projects;

@@ -10,7 +10,7 @@ import HeroIcons from "../../components/hero/heroIcons";
 //then import each icon type (faGithub, faLinkedin, etc) separately using library.add()
 //then use icon={["library", "icon"]} in FontAwesomeIcon
 
-const Page = () => {
+const Hero = () => {
   return (
     <div className="overflow-hidden flex flex-col gap-4 items-end w-screen mr-4">
       {/* <div
@@ -38,4 +38,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Hero;
