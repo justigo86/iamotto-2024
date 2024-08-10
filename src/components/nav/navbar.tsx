@@ -18,7 +18,8 @@ const Navbar = () => {
 
   const toggleNav = () => setExpandNav(!expandNav);
 
-  const buttonClass = "text-2xl pl-4 font-raleway font-bold hover:underline";
+  const buttonClass =
+    "fixed top-2 left-2 text-2xl pl-4 font-raleway font-bold hover:underline";
 
   return (
     <nav className="flex fixed top-0 z-0">
@@ -29,22 +30,27 @@ const Navbar = () => {
             // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
             className="bg-transparent h-screen overflow-hidden w-min"
             initial={{ height: 0 }}
-            animate={{ height: "100vh" }}
-            // exit={{ height: 0 }}
-            transition={{ duration: 0.5 }}
+            animate={{ height: "100vh", opacity: 1 }}
+            exit={{ opacity: 0 }}
+            // transition={{ duration: 0.5 }}
           >
             <button className={buttonClass} type="button" onClick={toggleNav}>
               Collapse
             </button>
             {/* <NavMenu setExpandNav={setExpandNav} /> */}
-            <NavMenu />
+            <NavMenu searchParams={{}} />
           </motion.div>
         ) : (
-          <div className="flex justify-between w-screen">
+          <motion.div
+            key="menu"
+            initial={{ height: 0 }}
+            animate={{ height: "100vh", opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <button className={buttonClass} type="button" onClick={toggleNav}>
               Menu
             </button>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </nav>
