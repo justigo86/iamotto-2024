@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/navbar";
 import { ModeToggle } from "@/components/theme/mode-toggle";
+import UiOrientationContextProvider from "./contexts/uiOrientationContext";
 
 // import {
 //   faB,
@@ -47,9 +48,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <ModeToggle />
-          {children}
+          <UiOrientationContextProvider>
+            <Navbar />
+            <ModeToggle />
+            {children}
+          </UiOrientationContextProvider>
         </ThemeProvider>
       </body>
     </html>

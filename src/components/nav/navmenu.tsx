@@ -2,6 +2,7 @@ import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { useUiOrientationContext } from "@/app/contexts/uiOrientationContext";
 // import { Ticker } from "../ticker/ticker3";
 // import { cards, Card } from "../ticker/tickerCards";
 
@@ -113,19 +114,16 @@ const itemVariants: Variants = {
 // };
 
 // const NavMenu = ({ setExpandNav }: Props) => {
-const NavMenu = ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const NavMenu = () => {
   // const toggleNav = () => setExpandNav(!setExpandNav);
   // const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
   // const [updateUI, setUpdateUI] = React.useState(false);
   // const uiOrientation = searchParams?.ui;
-  const [uiOrientation, setUiOrientation] = React.useState(
-    searchParams?.ui || "vertical"
-  );
-  console.log(uiOrientation);
+  // const [uiOrientation, setUiOrientation] = React.useState(
+  //   searchParams?.ui || ""
+  // );
+  const { uiOrientation, setUiOrientation } = useUiOrientationContext();
+  console.log("navmenu params", uiOrientation);
 
   // const toggleShown = (id: number) => {
   //   setUpdateUI((prev) => {

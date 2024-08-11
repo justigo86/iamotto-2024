@@ -38,7 +38,7 @@ const Navbar = () => {
               Collapse
             </button>
             {/* <NavMenu setExpandNav={setExpandNav} /> */}
-            <NavMenu searchParams={{}} />
+            <NavMenu />
           </motion.div>
         ) : (
           <motion.div
