@@ -68,7 +68,7 @@ const TickerItem: React.FC<TickerItemProps> = (props) => {
   }, [loopStart]);
 
   return (
-    <motion.div className=" flex nowrap" ref={itemRef}>
+    <motion.div className="flex nowrap" ref={itemRef}>
       {children}
     </motion.div>
   );
@@ -186,7 +186,7 @@ export const Ticker: React.FC<TickerProps> = (props) => {
         // ref={constraintsRef}
       />
       <motion.div
-        className="flex items-center overflow-hidden"
+        className="flex items-center h-min overflow-hidden"
         onHoverStart={() => stopLoop()}
         onHoverEnd={() => startLoop()}
         // ref={ref}

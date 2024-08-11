@@ -24,7 +24,7 @@ const Projects = (props: Props) => {
   //   </motion.div>
   // );
   return (
-    <div className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden flex justify-center">
+    <div className="border border-neutral-100 bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden flex items-center justify-center">
       <Ticker>
         {cards.map((card) => {
           return <Card key={card.id} card={card} />;
