@@ -4,7 +4,7 @@ type Props = {};
 
 const About = (props: Props) => {
   return (
-    <div className="bg-purple-300 dark:bg-purple-800 h-screen w-screen overflow-hidden flex justify-center">
+    <div className="bg-purple-300 dark:bg-purple-800 h-screen w-screen overflow-hidden flex justify-center items-center">
       About
     </div>
   );
