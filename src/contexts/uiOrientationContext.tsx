@@ -9,26 +9,10 @@ type UiOrientationContextType = {
 };
 
 //creating context for uiOrientation
-export const UiOrientationContext =
-  createContext<UiOrientationContextType | null>(null);
-
-//creating provider to wrap app and use context
-const UiOrientationContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const uiSearchParams = useSearchParams();
-  const orientation = uiSearchParams.get("ui");
-  const [uiOrientation, setUiOrientation] = useState(orientation);
-  return (
-    <UiOrientationContext.Provider value={{ uiOrientation, setUiOrientation }}>
-      {children}
-    </UiOrientationContext.Provider>
-  );
-};
-
-export default UiOrientationContextProvider;
+export const UiOrientationContext = createContext<UiOrientationContextType>({
+  uiOrientation: "vertical",
+  setUiOrientation: () => {},
+});
 
 //standard useContext custom hook for using context in components
 //without needing to use useContext in component and without checking context
@@ -43,3 +27,26 @@ export const useUiOrientationContext = () => {
 
   return context;
 };
+
+//creating provider to wrap app and use context
+const UiOrientationContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const uiSearchParams = useSearchParams();
+  const orientation = uiSearchParams.get("ui");
+  const [uiOrientation, setUiOrientation] = useState(orientation);
+  return (
+    <UiOrientationContext.Provider
+      value={{
+        uiOrientation,
+        setUiOrientation,
+      }}
+    >
+      {children}
+    </UiOrientationContext.Provider>
+  );
+};
+
+export default UiOrientationContextProvider;

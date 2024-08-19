@@ -16,13 +16,22 @@ const Hero = () => {
   // const [mouse, setMouse] = React.useState({ x: 0, y: 0 });
 
   return (
-    <div className="flex justify-center w-screen max-w-7xl">
-      <div className="flex justify-around w-full">
-        <div className="text-3xl">
+    <div
+      className="flex items-center justify-center w-screen"
+      // style={{
+      //   backgroundImage: `url(${bgNaut.src})`,
+      //   backgroundSize: "cover",
+      //   height: "100vh",
+      //   width: "100vw",
+      //   backgroundPosition: "center",
+      // }}
+    >
+      <div className="flex w-full">
+        <div className="ml-72 mt-16">
           {/* <p>{mouse.x}</p> <p>{mouse.y}</p> */}
           <Eyes />
         </div>
-        <div className="flex flex-col gap-4 items-end">
+        <div className="flex flex-col w-screen pr-2 gap-4 items-end">
           {/* <div
         className="z-0 overflow-hidden invert dark:invert-0"
         style={{

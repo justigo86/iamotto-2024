@@ -2,8 +2,6 @@ import React from "react";
 import bgSmart from "/public/SmartBrainCapture.jpg";
 import Image from "next/image";
 
-type Props = {};
-
 const sparqTags: string[] = [
   "React",
   "Angular",
@@ -15,7 +13,7 @@ const sparqTags: string[] = [
 const augTechTags: string[] = ["SQL"];
 const rootTags: string[] = ["HTML", "CSS", "JavaScript"];
 
-const Experience = (props: Props) => {
+const Experience = () => {
   return (
     <div className="bg-orange-200 dark:bg-orange-600 h-screen w-screen overflow-hidden flex flex-col justify-center items-center pt-20">
       <h1 className="text-5xl font-raleway font-bold">Experience</h1>

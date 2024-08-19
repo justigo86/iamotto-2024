@@ -2,7 +2,7 @@ import React from "react";
 // import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { useUiOrientationContext } from "@/app/contexts/uiOrientationContext";
+import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
 // import { Ticker } from "../ticker/ticker3";
 // import { cards, Card } from "../ticker/tickerCards";
 

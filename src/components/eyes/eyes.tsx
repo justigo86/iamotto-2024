@@ -2,9 +2,7 @@
 
 import React from "react";
 
-type Props = {};
-
-const Eyes = (props: Props) => {
+const Eyes = () => {
   React.useEffect(() => {
     // const pupilMovement = (
     //   mouseX: number,
@@ -48,16 +46,16 @@ const Eyes = (props: Props) => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex gap-2">
       <div
         id="container"
-        className="w-20 h-20 bg-white rounded-full flex items-center justify-center"
+        className="w-20 h-20 bg-white rounded-full flex items-center justify-center ease-in-out"
       >
         <div className="pupil w-5 h-5 bg-black rounded-full"></div>
       </div>
       <div
         id="container"
-        className="w-20 h-20 bg-white rounded-full flex items-center justify-center"
+        className="w-20 h-20 bg-white rounded-full flex items-center justify-center ease-in-out"
       >
         <div className="pupil w-5 h-5 bg-black rounded-full"></div>
       </div>

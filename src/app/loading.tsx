@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const loading = (props: Props) => {
+const loading = () => {
   return (
     <div className="h-screen w-screen flex justify-center items-center">
       LLLLLLLoading...

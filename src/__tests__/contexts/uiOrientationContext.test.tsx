@@ -8,7 +8,7 @@ import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/jest-globals";
 import UiOrientationContextProvider, {
   useUiOrientationContext,
-} from "../../app/contexts/uiOrientationContext";
+} from "../../contexts/uiOrientationContext";
 import { describe, it, jest, expect } from "@jest/globals";
 
 describe("UiOrientationContext", () => {

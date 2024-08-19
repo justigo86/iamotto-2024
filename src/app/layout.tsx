@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/nav/navbar";
 import { ModeToggle } from "@/components/theme/mode-toggle";
-import UiOrientationContextProvider from "./contexts/uiOrientationContext";
+// import { ThemeProvider } from "@/components/theme/theme-provider";
+// import UiOrientationContextProvider from "../contexts/uiOrientationContext";
+import Providers from "./providers";
 
 // import {
 //   faB,
@@ -42,18 +43,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={"system" ? "system" : "dark"}
-          enableSystem
-          disableTransitionOnChange
-        >
-          <UiOrientationContextProvider>
-            <Navbar />
-            <ModeToggle />
-            {children}
-          </UiOrientationContextProvider>
-        </ThemeProvider>
+        <Providers>
+          <Navbar />
+          <ModeToggle />
+          {children}
+        </Providers>
       </body>
     </html>
   );

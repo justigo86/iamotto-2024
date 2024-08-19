@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const About = (props: Props) => {
+const About = () => {
   return (
     <div className="bg-purple-300 dark:bg-purple-800 h-screen w-screen overflow-hidden flex flex-col justify-center items-center">
       <h1 className="text-5xl font-raleway font-bold">About</h1>

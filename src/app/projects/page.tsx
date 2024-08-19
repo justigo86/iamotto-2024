@@ -3,8 +3,6 @@ import { cards, Card } from "@/components/ticker/tickerCards";
 import React from "react";
 // import { motion, Variants } from "framer-motion";
 
-type Props = {};
-
 // const navMenuVariants: Variants = {
 //   hidden: { height: 0, transition: { duration: 0.5 } },
 //   visible: {
@@ -13,7 +11,7 @@ type Props = {};
 //   },
 // };
 
-const Projects = (props: Props) => {
+const Projects = () => {
   // return (
   //   <motion.div
   //     className="bg-light-chestnutRose dark:bg-dark-thunderbird h-screen w-screen overflow-hidden"
