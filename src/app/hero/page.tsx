@@ -17,7 +17,7 @@ const Hero = () => {
 
   return (
     <div
-      className="flex items-center justify-center w-screen"
+      className="flex items-center justify-center h-screen w-screen bg-light-fountainBlue dark:bg-dark-oracle"
       // style={{
       //   backgroundImage: `url(${bgNaut.src})`,
       //   backgroundSize: "cover",

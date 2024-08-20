@@ -3,14 +3,17 @@ const About = () => {
     <div className="bg-purple-300 dark:bg-purple-800 h-screen w-screen overflow-hidden flex flex-col justify-center items-center">
       <h1 className="text-5xl font-raleway font-bold">About</h1>
       <div>
-        <p>
-          I started in the industry two yeas ago primarily as a front-end
-          developer but been blessed with opportunities to contribute to
-          projects in a full-stack capacity. Always learning, building, and
-          growing to push myself to be a better developer. I am passionate about
-          building scalable, secure, user-friendly websites and applications
-          through teamwork and critical thinking.
-        </p>
+        <div>
+          <h3>About Me</h3>
+          <p>
+            I started in the industry two yeas ago primarily as a front-end
+            developer but been blessed with opportunities to contribute to
+            projects in a full-stack capacity. Always learning, building, and
+            growing to push myself to be a better developer. I am passionate
+            about building scalable, secure, user-friendly websites and
+            applications through teamwork and critical thinking.
+          </p>
+        </div>
         <div>
           <h5>Competencies</h5>
           <ul>

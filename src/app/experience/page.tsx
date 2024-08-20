@@ -28,7 +28,7 @@ const Experience = () => {
                 fullstack), web-based software development, and database
                 management/analysis.
               </p>
-              <ul className="flex gap-2">
+              <ul className="flex gap-2 pt-2">
                 {sparqTags.map((tag) => {
                   return (
                     <li
@@ -52,14 +52,14 @@ const Experience = () => {
             <Image src={bgSmart} alt="Sparq"></Image>
           </div>
           <div className="col-span-3 grid grid-cols-5">
-            <header className="col-span-1">2021</header>
+            <header className="col-span-1">2021 - 2021</header>
             <div className="col-span-4">
               <h3>Freelance Web Developer - Root (FnA Developments LLC)</h3>
               <p>
                 Frontend contract work to update company&apos;s BigCommerce
                 website.
               </p>
-              <ul className="flex gap-2">
+              <ul className="flex gap-2 pt-2">
                 {rootTags.map((tag) => {
                   return (
                     <li
@@ -80,8 +80,14 @@ const Experience = () => {
             <header className="col-span-1">2019 - 2021</header>
             <div className="col-span-4">
               <h3>Registrar - Augusta Technical College</h3>
-              <p>Director of Student Records</p>
-              <ul className="flex gap-2">
+              <p>
+                As department director, my role focused on data management. This
+                included maintaining and distributing confidential data in
+                accordance with institutional, state, and FERPA regulations.
+                Data managed via MySQL database. Duties also included managing
+                department budget, contracts, and all staff.
+              </p>
+              <ul className="flex gap-2 pt-2">
                 {augTechTags.map((tag) => {
                   return (
                     <li
