@@ -160,11 +160,11 @@ const NavMenu = () => {
   return (
     <motion.div
       key="menu"
-      className={`flex mx-4 mt-10 w-screen h-[75vh] justify-around ${
+      className={`flex mx-4 mt-10 w-screen h-[75vh] justify-around font-urbanist ${
         // updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
         uiOrientation === "horizontal"
           ? "text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row justify-center "
-          : "text-5xl lg:text-7xl flex-col"
+          : "text-3xl md:text-7xl ml-6 flex-col"
       }`}
       variants={navMenuItemVariants}
       initial="hidden"

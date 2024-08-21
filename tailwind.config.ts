@@ -90,6 +90,7 @@ const config = {
     fontFamily: {
       raleway: ["Raleway", "sans-serif"],
       titillium: ["Titillium Web", "serif"],
+      urbanist: ["Urbanist", "sans-serif"],
     },
   },
   plugins: [require("tailwindcss-animate")],

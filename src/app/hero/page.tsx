@@ -17,7 +17,7 @@ const Hero = () => {
 
   return (
     <div
-      className="flex items-center justify-center h-screen w-screen bg-light-fountainBlue dark:bg-dark-oracle"
+      className="flex items-center justify-center h-screen w-screen overflow-hidden bg-light-fountainBlue dark:bg-dark-oracle"
       // style={{
       //   backgroundImage: `url(${bgNaut.src})`,
       //   backgroundSize: "cover",
@@ -26,8 +26,8 @@ const Hero = () => {
       //   backgroundPosition: "center",
       // }}
     >
-      <div className="flex w-full">
-        <div className="ml-72 mt-16">
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="mt-16">
           {/* <p>{mouse.x}</p> <p>{mouse.y}</p> */}
           <Eyes />
         </div>
