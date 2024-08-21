@@ -160,9 +160,11 @@ const NavMenu = () => {
   return (
     <motion.div
       key="menu"
-      className={`flex mx-4 mt-10 ${
+      className={`flex mx-4 mt-10 w-screen h-[75vh] justify-around ${
         // updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
-        uiOrientation === "horizontal" ? "text-3xl gap-3" : "text-7xl flex-col"
+        uiOrientation === "horizontal"
+          ? "text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row justify-center "
+          : "text-5xl lg:text-7xl flex-col"
       }`}
       variants={navMenuItemVariants}
       initial="hidden"
@@ -179,7 +181,7 @@ const NavMenu = () => {
           <motion.div
             key={link.id}
             variants={itemVariants}
-            className={`my-7 uppercase font-bold w-fit ${
+            className={`uppercase font-bold w-fit ${
               link.shown ? "block" : "hidden"
             }`}
           >
@@ -193,7 +195,7 @@ const NavMenu = () => {
               >
                 {typeof link.path === "string" ? (
                   <motion.div>
-                    <span className="text-lg">0{link.id}</span>
+                    <span className="text-sm md:text-lg">0{link.id}</span>
                     {link.path.split("").map((letter, index) => {
                       return (
                         <motion.span
@@ -219,7 +221,7 @@ const NavMenu = () => {
                 )}
                 {typeof link.path === "string" ? (
                   <motion.div className="absolute inset-0">
-                    <span className="text-lg">0{link.id}</span>
+                    <span className="text-sm md:text-lg">0{link.id}</span>
                     {link.path.split("").map((letter, index) => {
                       return (
                         <motion.span
