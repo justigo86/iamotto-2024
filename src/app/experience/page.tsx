@@ -15,8 +15,8 @@ const rootTags: string[] = ["HTML", "CSS", "JavaScript"];
 
 const Experience = () => {
   return (
-    <div className="bg-orange-200 dark:bg-orange-600 h-screen w-screen overflow-hidden flex flex-col justify-center items-center pt-20">
-      <h1 className="text-5xl font-raleway font-bold">Experience</h1>
+    <div className="bg-orange-200 dark:bg-orange-600 w-screen md:overflow-hidden flex flex-col items-center pt-20">
+      <h1 className="text-5xl font-urbanist font-bold">Experience</h1>
       <div className="max-w-7xl">
         <div className="py-8 px-8 grid grid-cols-4 gap-10">
           <div className="col-span-3 grid grid-cols-5">

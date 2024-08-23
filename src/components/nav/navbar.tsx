@@ -19,7 +19,7 @@ const Navbar = () => {
   const toggleNav = () => setExpandNav(!expandNav);
 
   const buttonClass =
-    "fixed top-2 left-2 text-2xl pl-4 font-raleway font-bold hover:underline";
+    "fixed top-2 left-2 text-2xl pl-4 font-urbanist font-bold hover:underline";
 
   return (
     <nav className="flex fixed top-0 z-0">

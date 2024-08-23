@@ -31,7 +31,7 @@ const Hero = () => {
           {/* <p>{mouse.x}</p> <p>{mouse.y}</p> */}
           <Eyes />
         </div>
-        <div className="flex flex-col w-screen pr-2 gap-4 items-end">
+        <div className="flex flex-col w-screen pr-2 gap-4 items-end font-urbanist font-extrabold">
           {/* <div
         className="z-0 overflow-hidden invert dark:invert-0"
         style={{
@@ -42,10 +42,8 @@ const Hero = () => {
           backgroundPosition: "center",
         }}
       ></div> */}
-          <h1 className="text-9xl font-raleway font-bold">J_Otto</h1>
-          <h2 className="text-3xl font-raleway font-bold">
-            Full-Stack Engineer
-          </h2>
+          <h1 className="text-9xl">J_Otto</h1>
+          <h2 className="text-3xl">Full-Stack Engineer</h2>
           <HeroIcons />
           {/* <div>
         <h3>Projects</h3>

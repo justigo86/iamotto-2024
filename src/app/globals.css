@@ -69,10 +69,42 @@
 }
 
 @layer base {
-  * {
+  *,
+  ::before,
+  ::after {
     @apply border-border;
+    box-sizing: border-box;
+  }
+  html {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+  }
+  html::before,
+  html::after {
+    content: "";
+    backface-visibility: hidden;
+    position: fixed;
+    top: 0;
+    height: 100%;
   }
   body {
     @apply bg-background text-foreground;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+  }
+  body::before,
+  body::after {
+    height: 10px;
+    content: "";
+    backface-visibility: hidden;
+    position: fixed;
+    left: 0;
+    width: 100%;
+  }
+  body::after {
+    bottom: 0;
   }
 }
