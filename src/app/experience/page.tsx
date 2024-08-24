@@ -15,7 +15,7 @@ const rootTags: string[] = ["HTML", "CSS", "JavaScript"];
 
 const Experience = () => {
   return (
-    <div className="bg-orange-200 dark:bg-orange-600 w-screen md:overflow-hidden flex flex-col items-center pt-20">
+    <div className="bg-orange-200 dark:bg-orange-600 w-screen min-h-screen h-content overflow-y-visible md:overflow-hidden flex flex-col items-center pt-32">
       <h1 className="text-5xl font-urbanist font-bold">Experience</h1>
       <div className="max-w-7xl">
         <div className="py-8 px-8 grid grid-cols-4 gap-10">
@@ -28,7 +28,7 @@ const Experience = () => {
                 fullstack), web-based software development, and database
                 management/analysis.
               </p>
-              <ul className="flex gap-2 pt-2">
+              <ul className="flex gap-2 pt-2 flex-wrap">
                 {sparqTags.map((tag) => {
                   return (
                     <li
@@ -59,7 +59,7 @@ const Experience = () => {
                 Frontend contract work to update company&apos;s BigCommerce
                 website.
               </p>
-              <ul className="flex gap-2 pt-2">
+              <ul className="flex gap-2 pt-2 flex-wrap">
                 {rootTags.map((tag) => {
                   return (
                     <li
@@ -87,7 +87,7 @@ const Experience = () => {
                 Data managed via MySQL database. Duties also included managing
                 department budget, contracts, and all staff.
               </p>
-              <ul className="flex gap-2 pt-2">
+              <ul className="flex gap-2 pt-2 flex-wrap">
                 {augTechTags.map((tag) => {
                   return (
                     <li

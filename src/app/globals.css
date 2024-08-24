@@ -90,7 +90,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    overflow: hidden;
     margin: 0 auto;
     padding: 0;
     height: 100%;
