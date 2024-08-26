@@ -1,7 +1,7 @@
 import React from "react";
 import bgSmart from "/public/SmartBrainCapture.jpg";
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
+// import { Card } from "@/components/ui/card";
 
 const sparqTags: string[] = [
   "React",
@@ -19,7 +19,7 @@ const Experience = () => {
     <div className="bg-orange-200 dark:bg-orange-600 w-screen min-h-screen h-content overflow-y-visible md:overflow-hidden flex flex-col items-center pt-32">
       <h1 className="text-5xl font-urbanist font-bold">Experience</h1>
       <div className="max-w-7xl">
-        <div className="py-8 px-8 flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-10 ">
+        <div className="py-12 md:py-8 px-8 flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-10 ">
           <div className="col-span-3 flex flex-col gap-4 md:grid md:grid-cols-5">
             <header className="col-span-1">2021 - Present</header>
             <div className="col-span-4 flex flex-col gap-4">
@@ -49,9 +49,6 @@ const Experience = () => {
         </div>
 
         <div className="py-8 px-8 flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-10">
-          <div className="col-span-1">
-            <Image src={bgSmart} alt="Sparq"></Image>
-          </div>
           <div className="col-span-3 flex flex-col gap-4 md:grid md:grid-cols-5">
             <header className="col-span-1">2021 - 2021</header>
             <div className="col-span-4 flex flex-col gap-4">
@@ -75,6 +72,9 @@ const Experience = () => {
                 })}
               </ul>
             </div>
+          </div>
+          <div className="col-span-1">
+            <Image src={bgSmart} alt="Sparq"></Image>
           </div>
         </div>
 
