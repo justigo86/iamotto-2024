@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Import your page components here
 import Home from "@/app/page";
@@ -72,7 +71,7 @@ export default function Pagination() {
             transition={{ type: "tween", duration: 0.5 }}
             className="absolute inset-0"
           >
-            {pages[currentPage].component({})}
+            {/* {pages[currentPage].component({})} */}
           </motion.div>
         </AnimatePresence>
         <button

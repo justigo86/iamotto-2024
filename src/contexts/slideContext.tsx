@@ -1,18 +1,24 @@
 "use client";
 
-import React, { useState, createContext, useContext, ReactNode } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  ReactNode,
+  Children,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // import { Button } from "@/components/ui/button";
 
 interface SlideContextType {
   currentPage: number;
-  // navigateToPage: (pageIndex: number) => void
+  navigateToPage: (pageIndex: number) => void;
 }
 
 const SlideContext = createContext<SlideContextType | undefined>(undefined);
 
-export const useSlide = () => {
+export const useSlideContext = () => {
   const context = useContext(SlideContext);
   if (context === undefined) {
     throw new Error("useSlide must be used within a SlideProvider");
@@ -25,7 +31,7 @@ interface SlideProviderProps {
   pages: { name: string }[];
 }
 
-export function SlideProvider({ children, pages }: SlideProviderProps) {
+const SlideProvider = ({ children, pages }: SlideProviderProps) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -39,10 +45,10 @@ export function SlideProvider({ children, pages }: SlideProviderProps) {
     });
   };
 
-  // const navigateToPage = (pageIndex: number) => {
-  //   setDirection(pageIndex > currentPage ? 1 : -1);
-  //   setCurrentPage(pageIndex);
-  // };
+  const navigateToPage = (pageIndex: number) => {
+    setDirection(pageIndex > currentPage ? 1 : -1);
+    setCurrentPage(pageIndex);
+  };
 
   const variants = {
     enter: (direction: number) => ({
@@ -60,7 +66,7 @@ export function SlideProvider({ children, pages }: SlideProviderProps) {
   };
 
   return (
-    <SlideContext.Provider value={{ currentPage }}>
+    <SlideContext.Provider value={{ currentPage, navigateToPage }}>
       {/* <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
         <div className="relative w-full max-w-2xl aspect-[9/16] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
           <nav className="bg-gray-800 text-white p-4">
@@ -80,35 +86,35 @@ export function SlideProvider({ children, pages }: SlideProviderProps) {
           </nav>
           <div className="flex-grow relative"> */}
       <div className="flex items-center justify-center min-h-screen bg-transparent">
-        <div className=" relative w-full max-w-2xl flex-grow overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentPage}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ type: "tween", duration: 0.5 }}
-              className="absolute inset-0"
-            >
-              {React.Children.toArray(children)[currentPage]}
-            </motion.div>
-          </AnimatePresence>
-          <button
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
-            onClick={() => paginate(-1)}
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentPage}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ type: "tween", duration: 0.5 }}
+            className="absolute inset-0"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-800" />
-          </button>
-          <button
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
-            onClick={() => paginate(1)}
-          >
-            <ChevronRight className="w-6 h-6 text-gray-800" />
-          </button>
-        </div>
+            {Children.toArray(children)[currentPage]}
+          </motion.div>
+        </AnimatePresence>
+        <button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          onClick={() => paginate(-1)}
+        >
+          <ChevronLeft className="w-6 h-6 text-gray-800" />
+        </button>
+        <button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          onClick={() => paginate(1)}
+        >
+          <ChevronRight className="w-6 h-6 text-gray-800" />
+        </button>
       </div>
     </SlideContext.Provider>
   );
-}
+};
+
+export default SlideProvider;

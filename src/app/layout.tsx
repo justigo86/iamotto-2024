@@ -6,6 +6,26 @@ import { ModeToggle } from "@/components/theme/mode-toggle";
 // import { ThemeProvider } from "@/components/theme/theme-provider";
 // import UiOrientationContextProvider from "../contexts/uiOrientationContext";
 import Providers from "./providers";
+// import Home from "@/app/page";
+// import Experience from "@/app/experience/page";
+// import About from "@/app/about/page";
+// import Projects from "@/app/projects/page";
+// import Connect from "@/app/connect/page";
+// import SlideProvider from "@/contexts/slideContext";
+// const pages = [
+//   { component: Home, name: "Home" },
+//   { component: Experience, name: "Experience" },
+//   { component: About, name: "About" },
+//   { component: Projects, name: "Projects" },
+//   { component: Connect, name: "Connect" },
+// ];
+// const pages = [
+//   { component: <Home />, name: "Home" },
+//   { component: <Experience />, name: "Experience" },
+//   { component: <About />, name: "About" },
+//   { component: <Projects />, name: "Projects" },
+//   { component: <Connect />, name: "Connect" },
+// ];
 
 // import {
 //   faB,
@@ -46,6 +66,11 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <ModeToggle />
+          {/* <SlideProvider pages={pages}>
+            {pages.map(({ component: Component }, index) => (
+              <Component key={index} />
+            ))}
+          </SlideProvider> */}
           {children}
         </Providers>
       </body>
