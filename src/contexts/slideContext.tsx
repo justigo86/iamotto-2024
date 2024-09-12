@@ -6,10 +6,24 @@ import {
   useContext,
   ReactNode,
   Children,
+  ReactElement,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // import { Button } from "@/components/ui/button";
+
+// import Home from "@/app/page";
+// import Experience from "@/app/experience/page";
+// import About from "@/app/about/page";
+// import Projects from "@/app/projects/page";
+// import Connect from "@/app/connect/page";
+// const pages = [
+//   { component: Home, name: "Home" },
+//   { component: Experience, name: "Experience" },
+//   { component: About, name: "About" },
+//   { component: Projects, name: "Projects" },
+//   { component: Connect, name: "Connect" },
+// ];
 
 interface SlideContextType {
   currentPage: number;
@@ -26,21 +40,22 @@ export const useSlideContext = () => {
   return context;
 };
 
-interface SlideProviderProps {
-  children: ReactNode;
-  pages: { name: string }[];
-}
+// interface SlideProviderProps {
+//   children: ReactNode;
+// }
 
-const SlideProvider = ({ children, pages }: SlideProviderProps) => {
+const SlideProvider = ({ children }: { children: ReactNode }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  const childrenArray = Children.toArray(children);
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
     setCurrentPage((prevPage) => {
       let nextPage = prevPage + newDirection;
-      if (nextPage < 0) nextPage = pages.length - 1;
-      if (nextPage >= pages.length) nextPage = 0;
+      if (nextPage < 0) nextPage = childrenArray.length - 1;
+      if (nextPage >= childrenArray.length) nextPage = 0;
       return nextPage;
     });
   };
@@ -97,7 +112,7 @@ const SlideProvider = ({ children, pages }: SlideProviderProps) => {
             transition={{ type: "tween", duration: 0.5 }}
             className="absolute inset-0"
           >
-            {Children.toArray(children)[currentPage]}
+            {childrenArray[currentPage]}
           </motion.div>
         </AnimatePresence>
         <button

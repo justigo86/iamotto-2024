@@ -6,6 +6,7 @@ import { ModeToggle } from "@/components/theme/mode-toggle";
 // import { ThemeProvider } from "@/components/theme/theme-provider";
 // import UiOrientationContextProvider from "../contexts/uiOrientationContext";
 import Providers from "./providers";
+import UiOrientationContextProvider from "@/contexts/uiOrientationContext";
 // import Home from "@/app/page";
 // import Experience from "@/app/experience/page";
 // import About from "@/app/about/page";
@@ -63,16 +64,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="text-red-700 h-content">
       <body className={inter.className}>
-        <Providers>
+        <UiOrientationContextProvider>
           <Navbar />
           <ModeToggle />
-          {/* <SlideProvider pages={pages}>
+          <Providers>
+            {/* <SlideProvider pages={pages}>
             {pages.map(({ component: Component }, index) => (
               <Component key={index} />
             ))}
           </SlideProvider> */}
-          {children}
-        </Providers>
+            {children}
+          </Providers>
+        </UiOrientationContextProvider>
       </body>
     </html>
   );
