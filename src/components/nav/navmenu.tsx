@@ -1,14 +1,7 @@
 import React from "react";
-// import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
-// import { Ticker } from "../ticker/ticker3";
-// import { cards, Card } from "../ticker/tickerCards";
-
-// type Props = {
-//   setExpandNav: React.Dispatch<React.SetStateAction<boolean>>;
-// };
 
 interface LinkInterface {
   id: number;
@@ -54,17 +47,6 @@ const links: LinkInterface[] = [
     uiOrientation: "horizontal",
     // underlined: false,
   },
-  // {
-  //   id: 31,
-  //   path: (
-  //     <Ticker>
-  //       {cards.map((card) => {
-  //         return <Card key={card.id} card={card} />;
-  //       })}
-  //     </Ticker>
-  //   ),
-  //   shown: false,
-  // },
 ];
 
 const navMenuItemVariants: Variants = {
@@ -91,71 +73,8 @@ const itemVariants: Variants = {
   exit: { opacity: 0, y: -20 },
 };
 
-// const itemVariants: Variants = {
-//   hidden: { opacity: 0, y: -20 },
-//   visible: {
-//     opacity: 1,
-//     y: 20,
-//     transition: {
-//       staggerChildren: 0.2,
-//       delayChildren: 0.2,
-//       staggerDirection: 1,
-//     },
-//   },
-//   exit: {
-//     opacity: 0,
-//     y: -20,
-//     transition: {
-//       staggerChildren: 0.2,
-//       delayChildren: 0.2,
-//       staggerDirection: -1,
-//     },
-//   },
-// };
-
-// const NavMenu = ({ setExpandNav }: Props) => {
 const NavMenu = () => {
-  // const toggleNav = () => setExpandNav(!setExpandNav);
-  // const [linkState, setLinkState] = React.useState<LinkInterface[]>(links);
-  // const [updateUI, setUpdateUI] = React.useState(false);
-  // const uiOrientation = searchParams?.ui;
-  // const [uiOrientation, setUiOrientation] = React.useState(
-  //   searchParams?.ui || ""
-  // );
   const { uiOrientation, setUiOrientation } = useUiOrientationContext();
-  console.log("navmenu params", uiOrientation);
-
-  // const toggleShown = (id: number) => {
-  //   setUpdateUI((prev) => {
-  //     return !prev;
-  //   });
-  // setLinkState((prev) => {
-  //   return prev.map((link) => {
-  //     if (link.id === id) {
-  // return { ...link, underlined: !link.underlined };
-  // }
-  // if (link.id.toString() === id.toString() + "1") {
-  //   return {
-  //     ...link,
-  //     shown: !link.shown,
-  // underlined: !link.underlined
-  //       };
-  //     } else {
-  //       return link;
-  //     }
-  //   });
-  // });
-  // console.log(linkState);
-  // };
-
-  // const expandSection = (id: number) => {
-  //   const link = links.find(
-  //     (link) => link.id.toString() === id.toString() + "1"
-  //   );
-  //   if (link) {
-  //     link.shown = !link.shown;
-  //   }
-  // };
 
   return (
     <motion.div

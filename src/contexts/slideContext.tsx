@@ -6,17 +6,16 @@ import {
   useContext,
   ReactNode,
   Children,
-  ReactElement,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // import { Button } from "@/components/ui/button";
 
-// import Home from "@/app/page";
-// import Experience from "@/app/experience/page";
-// import About from "@/app/about/page";
-// import Projects from "@/app/projects/page";
-// import Connect from "@/app/connect/page";
+import Home from "@/app/page";
+import Experience from "@/app/experience/page";
+import About from "@/app/about/page";
+import Projects from "@/app/projects/page";
+import Connect from "@/app/connect/page";
 // const pages = [
 //   { component: Home, name: "Home" },
 //   { component: Experience, name: "Experience" },
@@ -24,6 +23,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 //   { component: Projects, name: "Projects" },
 //   { component: Connect, name: "Connect" },
 // ];
+const components = [Home, Experience, About, Projects, Connect];
 
 interface SlideContextType {
   currentPage: number;
@@ -44,18 +44,18 @@ export const useSlideContext = () => {
 //   children: ReactNode;
 // }
 
-const SlideProvider = ({ children }: { children: ReactNode }) => {
+const SlideProvider = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const childrenArray = Children.toArray(children);
+  // const childrenArray = Children.toArray(children);
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
     setCurrentPage((prevPage) => {
       let nextPage = prevPage + newDirection;
-      if (nextPage < 0) nextPage = childrenArray.length - 1;
-      if (nextPage >= childrenArray.length) nextPage = 0;
+      if (nextPage < 0) nextPage = components.length - 1;
+      if (nextPage >= components.length) nextPage = 0;
       return nextPage;
     });
   };
@@ -82,24 +82,6 @@ const SlideProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <SlideContext.Provider value={{ currentPage, navigateToPage }}>
-      {/* <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-        <div className="relative w-full max-w-2xl aspect-[9/16] bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
-          <nav className="bg-gray-800 text-white p-4">
-            <ul className="flex justify-around">
-              {pages.map((page, index) => (
-                <li key={page.name}>
-                  <Button
-                    variant="ghost"
-                    onClick={() => navigateToPage(index)}
-                    className={currentPage === index ? 'bg-gray-700' : ''}
-                  >
-                    {page.name}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className="flex-grow relative"> */}
       <div className="flex items-center justify-center min-h-screen bg-transparent">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -112,7 +94,7 @@ const SlideProvider = ({ children }: { children: ReactNode }) => {
             transition={{ type: "tween", duration: 0.5 }}
             className="absolute inset-0"
           >
-            {childrenArray[currentPage]}
+            {components[currentPage]()}
           </motion.div>
         </AnimatePresence>
         <button
@@ -123,7 +105,9 @@ const SlideProvider = ({ children }: { children: ReactNode }) => {
         </button>
         <button
           className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
-          onClick={() => paginate(1)}
+          onClick={() => {
+            paginate(1);
+          }}
         >
           <ChevronRight className="w-6 h-6 text-gray-800" />
         </button>
