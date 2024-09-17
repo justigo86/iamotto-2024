@@ -2,6 +2,7 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
+import { components } from "@/contexts/slideContext";
 
 interface LinkInterface {
   id: number;
@@ -11,43 +12,43 @@ interface LinkInterface {
   // underlined: boolean;
 }
 
-const links: LinkInterface[] = [
-  {
-    id: 1,
-    path: "home",
-    shown: true,
-    uiOrientation: "vertical",
-    // underlined: false,
-  },
-  {
-    id: 2,
-    path: "experience",
-    shown: true,
-    uiOrientation: "horizontal",
-    // underlined: false,
-  },
-  {
-    id: 3,
-    path: "projects",
-    shown: true,
-    uiOrientation: "horizontal",
-    // underlined: false,
-  },
-  {
-    id: 4,
-    path: "about",
-    shown: true,
-    uiOrientation: "horizontal",
-    // underlined: false,
-  },
-  {
-    id: 5,
-    path: "connect",
-    shown: true,
-    uiOrientation: "horizontal",
-    // underlined: false,
-  },
-];
+// const links: LinkInterface[] = [
+//   {
+//     id: 1,
+//     path: "home",
+//     shown: true,
+//     uiOrientation: "vertical",
+//     // underlined: false,
+//   },
+//   {
+//     id: 2,
+//     path: "experience",
+//     shown: true,
+//     uiOrientation: "horizontal",
+//     // underlined: false,
+//   },
+//   {
+//     id: 3,
+//     path: "projects",
+//     shown: true,
+//     uiOrientation: "horizontal",
+//     // underlined: false,
+//   },
+//   {
+//     id: 4,
+//     path: "about",
+//     shown: true,
+//     uiOrientation: "horizontal",
+//     // underlined: false,
+//   },
+//   {
+//     id: 5,
+//     path: "connect",
+//     shown: true,
+//     uiOrientation: "horizontal",
+//     // underlined: false,
+//   },
+// ];
 
 const navMenuItemVariants: Variants = {
   navHidden: { opacity: 0 },
@@ -95,7 +96,7 @@ const NavMenu = () => {
         staggerDirection: 1,
       }}
     >
-      {links.map((link: LinkInterface) => {
+      {components.map((link: LinkInterface) => {
         return (
           <motion.div
             key={link.id}

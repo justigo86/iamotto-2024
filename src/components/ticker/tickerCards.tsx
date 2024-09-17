@@ -45,7 +45,7 @@ export const Card = ({ card }: { card: CardType }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="absolute m-auto inset-0 transition-transform duration-300 rounded h-[45vh] w-[35vw] lg:w-[20vw]"
+        className="absolute m-auto inset-0 transition-transform duration-300 rounded h-[45vh] w-[35vw] lg:w-[20vw] min-w-60"
       ></div>
       <div className="absolute inset-0 grid place-content-center group">
         <p className="p-8 text-6xl font-black uppercase text-white backdrop-blur-lg group-hover:backdrop-blur-0">

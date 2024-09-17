@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useState,
-  createContext,
-  useContext,
-  ReactNode,
-  Children,
-} from "react";
+import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 // import { Button } from "@/components/ui/button";
@@ -16,14 +10,52 @@ import Experience from "@/app/experience/page";
 import About from "@/app/about/page";
 import Projects from "@/app/projects/page";
 import Connect from "@/app/connect/page";
-// const pages = [
-//   { component: Home, name: "Home" },
-//   { component: Experience, name: "Experience" },
-//   { component: About, name: "About" },
-//   { component: Projects, name: "Projects" },
-//   { component: Connect, name: "Connect" },
-// ];
-const components = [Home, Experience, About, Projects, Connect];
+
+interface LinkInterface {
+  id: number;
+  path: string;
+  shown: boolean;
+  uiOrientation: string;
+  component: () => JSX.Element;
+}
+export const components: LinkInterface[] = [
+  {
+    id: 1,
+    path: "home",
+    shown: true,
+    uiOrientation: "vertical",
+    component: Home,
+  },
+  {
+    id: 2,
+    path: "experience",
+    shown: true,
+    uiOrientation: "horizontal",
+    component: Experience,
+  },
+  {
+    id: 3,
+    path: "projects",
+    shown: true,
+    uiOrientation: "horizontal",
+    component: Projects,
+  },
+  {
+    id: 4,
+    path: "about",
+    shown: true,
+    uiOrientation: "horizontal",
+    component: About,
+  },
+  {
+    id: 5,
+    path: "connect",
+    shown: true,
+    uiOrientation: "horizontal",
+    component: Connect,
+  },
+];
+// const components = [Home, Experience, Projects About, Connect];
 
 interface SlideContextType {
   currentPage: number;
@@ -94,7 +126,8 @@ const SlideProvider = () => {
             transition={{ type: "tween", duration: 0.5 }}
             className="absolute inset-0"
           >
-            {components[currentPage]()}
+            {/* {components[currentPage]()} */}
+            {components[currentPage].component()}
           </motion.div>
         </AnimatePresence>
         <button

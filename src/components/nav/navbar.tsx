@@ -2,7 +2,7 @@
 
 import NavMenu from "./navmenu";
 import { useState } from "react";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 // const navMenuVariants: Variants = {
 //   hidden: { height: 0, transition: { duration: 0.5 } },
