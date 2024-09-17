@@ -2,15 +2,16 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
-import { components } from "@/contexts/slideContext";
+import { components, ComponentInterface } from "@/contexts/slideContext";
+import { useSlideContext } from "@/contexts/slideContext";
 
-interface LinkInterface {
-  id: number;
-  path: string;
-  shown: boolean;
-  uiOrientation: string;
-  // underlined: boolean;
-}
+// interface LinkInterface {
+//   id: number;
+//   path: string;
+//   shown: boolean;
+//   uiOrientation: string;
+//   // underlined: boolean;
+// }
 
 // const links: LinkInterface[] = [
 //   {
@@ -75,7 +76,14 @@ const itemVariants: Variants = {
 };
 
 const NavMenu = () => {
+  //NOTE: this is an issue - cannot call outside of slideProvider
+  // const { navigateToPage } = useSlideContext();
   const { uiOrientation, setUiOrientation } = useUiOrientationContext();
+
+  const onLinkClick = (orientation: string, id: number) => {
+    setUiOrientation(orientation);
+    // navigateToPage(id - 1);
+  };
 
   return (
     <motion.div
@@ -96,27 +104,29 @@ const NavMenu = () => {
         staggerDirection: 1,
       }}
     >
-      {components.map((link: LinkInterface) => {
+      {components.map((component: ComponentInterface) => {
         return (
           <motion.div
-            key={link.id}
+            key={component.id}
             variants={itemVariants}
             className={`uppercase font-bold w-fit ${
-              link.shown ? "block" : "hidden"
+              component.shown ? "block" : "hidden"
             }`}
           >
-            <Link href={`${link.path}?ui=${link.uiOrientation}`}>
+            <Link href={`${component.path}?ui=${component.uiOrientation}`}>
               <motion.div
                 className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
                 variants={itemVariants}
                 initial="initial"
                 whileHover="hovered"
-                onClick={() => setUiOrientation(link.uiOrientation)}
+                onClick={() =>
+                  onLinkClick(component.uiOrientation, component.id)
+                }
               >
-                {typeof link.path === "string" ? (
+                {typeof component.path === "string" ? (
                   <motion.div>
-                    <span className="text-sm md:text-lg">0{link.id}</span>
-                    {link.path.split("").map((letter, index) => {
+                    <span className="text-sm md:text-lg">0{component.id}</span>
+                    {component.path.split("").map((letter, index) => {
                       return (
                         <motion.span
                           key={index}
@@ -137,12 +147,12 @@ const NavMenu = () => {
                     })}
                   </motion.div>
                 ) : (
-                  <motion.div>{link.path}</motion.div>
+                  <motion.div>{component.path}</motion.div>
                 )}
-                {typeof link.path === "string" ? (
+                {typeof component.path === "string" ? (
                   <motion.div className="absolute inset-0">
-                    <span className="text-sm md:text-lg">0{link.id}</span>
-                    {link.path.split("").map((letter, index) => {
+                    <span className="text-sm md:text-lg">0{component.id}</span>
+                    {component.path.split("").map((letter, index) => {
                       return (
                         <motion.span
                           key={index}

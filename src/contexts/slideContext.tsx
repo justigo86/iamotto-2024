@@ -11,14 +11,14 @@ import About from "@/app/about/page";
 import Projects from "@/app/projects/page";
 import Connect from "@/app/connect/page";
 
-interface LinkInterface {
+export interface ComponentInterface {
   id: number;
   path: string;
   shown: boolean;
   uiOrientation: string;
   component: () => JSX.Element;
 }
-export const components: LinkInterface[] = [
+export const components: ComponentInterface[] = [
   {
     id: 1,
     path: "home",
