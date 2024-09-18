@@ -3,7 +3,7 @@
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import UiOrientationContextProvider from "../contexts/uiOrientationContext";
 import { Suspense } from "react";
-// import SlideProvider from "@/contexts/slideContext";
+import SlideProvider from "@/contexts/slideContext";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   // with build - was erroring with "export encountered errors on following path" - listed all paths
@@ -16,7 +16,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       disableTransitionOnChange
     >
       <Suspense fallback={<div>Loading...</div>}>
-        <UiOrientationContextProvider>{children}</UiOrientationContextProvider>
+        <UiOrientationContextProvider>
+          <SlideProvider>{children}</SlideProvider>
+        </UiOrientationContextProvider>
         {/* <SlideProvider /> */}
       </Suspense>
     </ThemeProvider>

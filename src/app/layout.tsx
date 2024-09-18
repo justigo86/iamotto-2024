@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/nav/navbar";
 import { ModeToggle } from "@/components/theme/mode-toggle";
 import Providers from "./providers";
-import SlideProvider from "@/contexts/slideContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +18,7 @@ export default function RootLayout() {
       <body className={inter.className}>
         <Providers>
           <ModeToggle />
-          <SlideProvider>
-            <Navbar />
-          </SlideProvider>
+          <Navbar />
         </Providers>
       </body>
     </html>
