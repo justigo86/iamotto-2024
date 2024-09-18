@@ -18,9 +18,10 @@ export default function RootLayout() {
     <html lang="en" suppressHydrationWarning className="text-red-700 h-content">
       <body className={inter.className}>
         <Providers>
-          <Navbar />
           <ModeToggle />
-          <SlideProvider />
+          <SlideProvider>
+            <Navbar />
+          </SlideProvider>
         </Providers>
       </body>
     </html>

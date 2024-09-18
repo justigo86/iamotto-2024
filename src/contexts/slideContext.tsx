@@ -3,6 +3,7 @@
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ComponentInterface } from "@/types/ComponentInterface";
 // import { Button } from "@/components/ui/button";
 
 import Home from "@/app/page";
@@ -10,14 +11,8 @@ import Experience from "@/app/experience/page";
 import About from "@/app/about/page";
 import Projects from "@/app/projects/page";
 import Connect from "@/app/connect/page";
+// import Navbar from "@/components/nav/navbar";
 
-export interface ComponentInterface {
-  id: number;
-  path: string;
-  shown: boolean;
-  uiOrientation: string;
-  component: () => JSX.Element;
-}
 export const components: ComponentInterface[] = [
   {
     id: 1,
@@ -76,7 +71,7 @@ export const useSlideContext = () => {
 //   children: ReactNode;
 // }
 
-const SlideProvider = () => {
+const SlideProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -114,6 +109,7 @@ const SlideProvider = () => {
 
   return (
     <SlideContext.Provider value={{ currentPage, navigateToPage }}>
+      {/* <Navbar /> */}
       <div className="flex items-center justify-center min-h-screen bg-transparent">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -127,6 +123,7 @@ const SlideProvider = () => {
             className="absolute inset-0"
           >
             {/* {components[currentPage]()} */}
+            {children}
             {components[currentPage].component()}
           </motion.div>
         </AnimatePresence>

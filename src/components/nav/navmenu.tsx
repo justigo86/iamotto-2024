@@ -2,8 +2,9 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
-import { components, ComponentInterface } from "@/contexts/slideContext";
+import { components } from "@/contexts/slideContext";
 import { useSlideContext } from "@/contexts/slideContext";
+import { ComponentInterface } from "@/types/ComponentInterface";
 
 // interface LinkInterface {
 //   id: number;
@@ -77,12 +78,12 @@ const itemVariants: Variants = {
 
 const NavMenu = () => {
   //NOTE: this is an issue - cannot call outside of slideProvider
-  // const { navigateToPage } = useSlideContext();
+  const { navigateToPage } = useSlideContext();
   const { uiOrientation, setUiOrientation } = useUiOrientationContext();
 
   const onLinkClick = (orientation: string, id: number) => {
     setUiOrientation(orientation);
-    // navigateToPage(id - 1);
+    navigateToPage(id - 1);
   };
 
   return (
