@@ -10,6 +10,7 @@ import Experience from "@/app/experience/page";
 import About from "@/app/about/page";
 import Projects from "@/app/projects/page";
 import Connect from "@/app/connect/page";
+import { useUiOrientationContext } from "./uiOrientationContext";
 
 export const components: ComponentInterface[] = [
   {
@@ -72,10 +73,15 @@ export const useSlideContext = () => {
 const SlideProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
+  const { uiOrientation, setUiOrientation } = useUiOrientationContext();
 
   // const childrenArray = Children.toArray(children);
 
   const paginate = (newDirection: number) => {
+    const previousPageIndex = currentPage - newDirection;
+    const previousPageUiOrientation =
+      components[previousPageIndex].uiOrientation;
+    setUiOrientation(previousPageUiOrientation);
     setDirection(newDirection);
     setCurrentPage((prevPage) => {
       let nextPage = prevPage + newDirection;
