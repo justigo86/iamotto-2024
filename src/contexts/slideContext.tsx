@@ -73,15 +73,18 @@ export const useSlideContext = () => {
 const SlideProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
-  const { uiOrientation, setUiOrientation } = useUiOrientationContext();
+  // const { uiOrientation, setUiOrientation } = useUiOrientationContext();
 
   // const childrenArray = Children.toArray(children);
 
   const paginate = (newDirection: number) => {
-    const previousPageIndex = currentPage - newDirection;
-    const previousPageUiOrientation =
-      components[previousPageIndex].uiOrientation;
-    setUiOrientation(previousPageUiOrientation);
+    // const previousPageIndex =
+    //   currentPage - newDirection === -1
+    //     ? components.length - 1
+    //     : currentPage - newDirection;
+    // const previousPageUiOrientation =
+    //   components[previousPageIndex].uiOrientation;
+    // setUiOrientation(previousPageUiOrientation);
     setDirection(newDirection);
     setCurrentPage((prevPage) => {
       let nextPage = prevPage + newDirection;

@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import UiOrientationContextProvider from "../contexts/uiOrientationContext";
+// import UiOrientationContextProvider from "../contexts/uiOrientationContext";
 import { Suspense } from "react";
 import SlideProvider from "@/contexts/slideContext";
 
@@ -16,10 +16,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       disableTransitionOnChange
     >
       <Suspense fallback={<div>Loading...</div>}>
-        <UiOrientationContextProvider>
-          <SlideProvider>{children}</SlideProvider>
-        </UiOrientationContextProvider>
-        {/* <SlideProvider /> */}
+        {/* <UiOrientationContextProvider> */}
+        <SlideProvider>{children}</SlideProvider>
+        {/* </UiOrientationContextProvider> */}
       </Suspense>
     </ThemeProvider>
   );
