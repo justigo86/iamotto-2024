@@ -2,7 +2,12 @@
 
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowBigLeft,
+  ArrowBigRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { ComponentInterface } from "@/types/ComponentInterface";
 
 import Home from "@/app/page";
@@ -133,19 +138,33 @@ const SlideProvider = ({ children }: { children: React.ReactNode }) => {
             {/* {components[currentPage]()} */}
           </motion.div>
         </AnimatePresence>
-        <button
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+        {/* <button
+          className="fixed top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
           onClick={() => paginate(-1)}
         >
-          <ChevronLeft className="w-6 h-6 text-gray-800" />
+          <ChevronLeft className="text-gray-800 text-" />
         </button>
         <button
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
+          className="fixed top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
           onClick={() => {
             paginate(1);
           }}
         >
           <ChevronRight className="w-6 h-6 text-gray-800" />
+        </button> */}
+        <button
+          className="fixed top-1/2 left-2 transform -translate-y-1/2 bg-transparent"
+          onClick={() => paginate(-1)}
+        >
+          <ArrowBigLeft className="text-gray-800 dark:text-gray-200 h-20 w-20" />
+        </button>
+        <button
+          className="fixed top-1/2 right-2 transform -translate-y-1/2 bg-transparent"
+          onClick={() => {
+            paginate(1);
+          }}
+        >
+          <ArrowBigRight className="text-gray-800 dark:text-gray-200 h-20 w-20" />
         </button>
       </div>
     </SlideContext.Provider>
