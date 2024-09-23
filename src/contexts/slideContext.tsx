@@ -10,7 +10,7 @@ import Experience from "@/app/experience/page";
 import About from "@/app/about/page";
 import Projects from "@/app/projects/page";
 import Connect from "@/app/connect/page";
-import { useUiOrientationContext } from "./uiOrientationContext";
+// import { useUiOrientationContext } from "./uiOrientationContext";
 
 export const components: ComponentInterface[] = [
   {
