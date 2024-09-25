@@ -1,56 +1,10 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
+// import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
 import { components } from "@/contexts/slideContext";
 import { useSlideContext } from "@/contexts/slideContext";
 import { ComponentInterface } from "@/types/ComponentInterface";
-
-// interface LinkInterface {
-//   id: number;
-//   path: string;
-//   shown: boolean;
-//   uiOrientation: string;
-//   // underlined: boolean;
-// }
-
-// const links: LinkInterface[] = [
-//   {
-//     id: 1,
-//     path: "home",
-//     shown: true,
-//     uiOrientation: "vertical",
-//     // underlined: false,
-//   },
-//   {
-//     id: 2,
-//     path: "experience",
-//     shown: true,
-//     uiOrientation: "horizontal",
-//     // underlined: false,
-//   },
-//   {
-//     id: 3,
-//     path: "projects",
-//     shown: true,
-//     uiOrientation: "horizontal",
-//     // underlined: false,
-//   },
-//   {
-//     id: 4,
-//     path: "about",
-//     shown: true,
-//     uiOrientation: "horizontal",
-//     // underlined: false,
-//   },
-//   {
-//     id: 5,
-//     path: "connect",
-//     shown: true,
-//     uiOrientation: "horizontal",
-//     // underlined: false,
-//   },
-// ];
 
 const navMenuItemVariants: Variants = {
   navHidden: { opacity: 0 },
@@ -79,10 +33,10 @@ const itemVariants: Variants = {
 const NavMenu = () => {
   //NOTE: this is an issue - cannot call outside of slideProvider
   const { navigateToPage } = useSlideContext();
-  const { uiOrientation, setUiOrientation } = useUiOrientationContext();
+  // const { uiOrientation, setUiOrientation } = useUiOrientationContext();
 
-  const onLinkClick = (orientation: string, id: number) => {
-    setUiOrientation(orientation);
+  const onLinkClick = (id: number) => {
+    // setUiOrientation(orientation);
     navigateToPage(id - 1);
   };
 
@@ -122,9 +76,7 @@ const NavMenu = () => {
                 variants={itemVariants}
                 initial="initial"
                 whileHover="hovered"
-                onClick={() =>
-                  onLinkClick(component.uiOrientation, component.id)
-                }
+                onClick={() => onLinkClick(component.id)}
               >
                 {typeof component.path === "string" ? (
                   <motion.div>

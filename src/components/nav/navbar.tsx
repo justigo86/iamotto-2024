@@ -1,7 +1,7 @@
 "use client";
 
 import NavMenu from "./navmenu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 // const navMenuVariants: Variants = {
@@ -15,8 +15,25 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
+  const [animateHeight, setAnimateHeight] = useState("100vh");
 
   const toggleNav = () => setExpandNav(!expandNav);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setAnimateHeight("20vh");
+      } else {
+        setAnimateHeight("100vh");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const buttonClass =
     "fixed top-2 left-2 text-2xl pl-4 font-urbanist font-bold hover:underline";
@@ -30,7 +47,10 @@ const Navbar = () => {
             // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
             className="bg-slate-300 dark:bg-slate-800 md:bg-transparent md:dark:bg-transparent bg-opacity-90 dark:bg-opacity-90 h-content overflow-hidden w-min"
             initial={{ height: 0 }}
-            animate={{ height: "100vh", opacity: 1 }}
+            animate={{
+              height: animateHeight,
+              opacity: 1,
+            }}
             exit={{ opacity: 0 }}
             // transition={{ duration: 0.5 }}
           >
@@ -44,7 +64,10 @@ const Navbar = () => {
           <motion.div
             key="menu"
             initial={{ height: 0 }}
-            animate={{ height: "100vh", opacity: 1 }}
+            animate={{
+              height: animateHeight,
+              opacity: 1,
+            }}
             exit={{ opacity: 0 }}
           >
             <button className={buttonClass} type="button" onClick={toggleNav}>
