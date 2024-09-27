@@ -49,7 +49,7 @@ const NavMenu = () => {
       //     ? "text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row justify-center "
       //     : "text-3xl md:text-7xl ml-6 flex-col"
       // }`}
-      className="flex mx-4 mt-10 w-screen h-[75vh] justify-around font-urbanist text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row"
+      className="flex mx-4 mt-10 w-screen h-[75vh] md:h-content justify-around font-urbanist text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row"
       variants={navMenuItemVariants}
       initial="hidden"
       animate="visible"
