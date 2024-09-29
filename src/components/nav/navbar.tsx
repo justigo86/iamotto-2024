@@ -16,14 +16,13 @@ import { AnimatePresence, motion } from "framer-motion";
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
   const [animateHeight, setAnimateHeight] = useState(() => {
-    return window.innerWidth > 768 ? "20vh" : "100vh";
+    ("");
   });
 
   const toggleNav = () => setExpandNav(!expandNav);
 
   useEffect(() => {
     const handleResize = () => {
-      console.log("width", window.innerWidth);
       if (window.innerWidth > 768) {
         setAnimateHeight("20vh");
       } else {
@@ -31,6 +30,7 @@ const Navbar = () => {
       }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
