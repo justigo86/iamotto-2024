@@ -59,7 +59,7 @@ export default function Pagination() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent">
-      <div className=" relative w-full max-w-2xl flex-grow overflow-hidden">
+      <div className=" relative w-full flex-grow overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentPage}
@@ -69,7 +69,7 @@ export default function Pagination() {
             animate="center"
             exit="exit"
             transition={{ type: "tween", duration: 0.5 }}
-            className="absolute inset-0"
+            className="absolute inset-0 max-w-6xl mx-auto"
           >
             {/* {pages[currentPage].component({})} */}
           </motion.div>

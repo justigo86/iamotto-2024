@@ -41,101 +41,101 @@ const NavMenu = () => {
   };
 
   return (
-    <motion.div
-      key="menu"
-      // className={`flex mx-4 mt-10 w-screen h-[75vh] justify-around font-urbanist ${
-      //   // updateUI === true ? "text-3xl gap-3" : "text-7xl flex-col"
-      //   uiOrientation === "horizontal"
-      //     ? "text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row justify-center "
-      //     : "text-3xl md:text-7xl ml-6 flex-col"
-      // }`}
-      className="flex mx-4 mt-10 w-screen h-[75vh] md:h-content justify-around font-urbanist text-3xl ml-6 md:ml-0 md:gap-3 flex-col md:flex-row"
-      variants={navMenuItemVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      transition={{
-        staggerChildren: 0.2,
-        delayChildren: 0.2,
-        staggerDirection: 1,
-      }}
-    >
-      {components.map((component: ComponentInterface) => {
-        return (
-          <motion.div
-            key={component.id}
-            variants={itemVariants}
-            className={`uppercase font-bold w-fit ${
-              component.shown ? "block" : "hidden"
-            }`}
-          >
-            {/* <Link href={`${component.path}?ui=${component.uiOrientation}`}> */}
-            <Link href={`${component.path}`}>
-              <motion.div
-                className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
-                variants={itemVariants}
-                initial="initial"
-                whileHover="hovered"
-                onClick={() => onLinkClick(component.id)}
-              >
-                {typeof component.path === "string" ? (
-                  <motion.div>
-                    <span className="text-sm md:text-lg">0{component.id}</span>
-                    {component.path.split("").map((letter, index) => {
-                      return (
-                        <motion.span
-                          key={index}
-                          className="inline-block"
-                          variants={{
-                            initial: { y: 0 },
-                            hovered: { y: "-100%" },
-                          }}
-                          transition={{
-                            duration: 0.2,
-                            delay: 0.03 * index,
-                            ease: "easeInOut",
-                          }}
-                        >
-                          {letter}
-                        </motion.span>
-                      );
-                    })}
-                  </motion.div>
-                ) : (
-                  <motion.div>{component.path}</motion.div>
-                )}
-                {typeof component.path === "string" ? (
-                  <motion.div className="absolute inset-0">
-                    <span className="text-sm md:text-lg">0{component.id}</span>
-                    {component.path.split("").map((letter, index) => {
-                      return (
-                        <motion.span
-                          key={index}
-                          className="inline-block"
-                          variants={{
-                            initial: { y: "100%" },
-                            hovered: { y: 0 },
-                          }}
-                          transition={{
-                            duration: 0.2,
-                            delay: 0.03 * index,
-                            ease: "easeInOut",
-                          }}
-                        >
-                          {letter}
-                        </motion.span>
-                      );
-                    })}
-                  </motion.div>
-                ) : (
-                  ""
-                )}
-              </motion.div>
-            </Link>
-          </motion.div>
-        );
-      })}
-    </motion.div>
+    <div className="flex justify-center items-center">
+      <motion.div
+        key="menu"
+        className="flex mx-4 h-[75vh] md:h-content justify-around font-urbanist text-3xl ml-6 md:ml-0 md:gap-6 flex-col md:flex-row"
+        variants={navMenuItemVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        transition={{
+          staggerChildren: 0.2,
+          delayChildren: 0.2,
+          staggerDirection: 1,
+        }}
+      >
+        {components.map((component: ComponentInterface) => {
+          return (
+            <motion.div
+              key={component.id}
+              variants={itemVariants}
+              className={`uppercase font-bold w-fit ${
+                component.shown ? "block" : "hidden"
+              }`}
+            >
+              {/* <Link href={`${component.path}?ui=${component.uiOrientation}`}> */}
+              <Link href={`${component.path}`}>
+                <motion.div
+                  className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
+                  variants={itemVariants}
+                  initial="initial"
+                  whileHover="hovered"
+                  onClick={() => onLinkClick(component.id)}
+                >
+                  {typeof component.path === "string" ? (
+                    <motion.div>
+                      <span className="text-sm md:text-lg">
+                        0{component.id}
+                      </span>
+                      {component.path.split("").map((letter, index) => {
+                        return (
+                          <motion.span
+                            key={index}
+                            className="inline-block"
+                            variants={{
+                              initial: { y: 0 },
+                              hovered: { y: "-100%" },
+                            }}
+                            transition={{
+                              duration: 0.2,
+                              delay: 0.03 * index,
+                              ease: "easeInOut",
+                            }}
+                          >
+                            {letter}
+                          </motion.span>
+                        );
+                      })}
+                    </motion.div>
+                  ) : (
+                    <motion.div>{component.path}</motion.div>
+                  )}
+                  {typeof component.path === "string" ? (
+                    <motion.div className="absolute inset-0">
+                      <span className="text-sm md:text-lg">
+                        0{component.id}
+                      </span>
+                      {component.path.split("").map((letter, index) => {
+                        return (
+                          <motion.span
+                            key={index}
+                            className="inline-block"
+                            variants={{
+                              initial: { y: "100%" },
+                              hovered: { y: 0 },
+                            }}
+                            transition={{
+                              duration: 0.2,
+                              delay: 0.03 * index,
+                              ease: "easeInOut",
+                            }}
+                          >
+                            {letter}
+                          </motion.span>
+                        );
+                      })}
+                    </motion.div>
+                  ) : (
+                    ""
+                  )}
+                </motion.div>
+              </Link>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 };
 
