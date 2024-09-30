@@ -15,9 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Navbar = () => {
   const [expandNav, setExpandNav] = useState<boolean>(false);
-  const [animateHeight, setAnimateHeight] = useState(() => {
-    ("");
-  });
+  const [animateHeight, setAnimateHeight] = useState(() => "");
 
   const toggleNav = () => setExpandNav(!expandNav);
 
