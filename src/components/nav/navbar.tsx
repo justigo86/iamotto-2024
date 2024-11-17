@@ -38,7 +38,7 @@ const Navbar = () => {
   }, []);
 
   const buttonClass =
-    "items-start text-2xl pl-4 font-urbanist font-bold hover:underline";
+    "items-start text-2xl ml-4 font-urbanist font-bold hover:underline";
 
   return (
     <nav className="flex fixed w-screen top-0 z-10 justify-center items-center">
@@ -48,7 +48,7 @@ const Navbar = () => {
             <motion.div
               key="menu"
               // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
-              className="bg-slate-300 dark:bg-slate-800 md:bg-transparent md:dark:bg-transparent bg-opacity-90 dark:bg-opacity-90 h-content overflow-hidden w-min"
+              className="bg-slate-300 dark:bg-slate-800 md:bg-transparent md:dark:bg-transparent bg-opacity-90 dark:bg-opacity-90 h-content w-full overflow-hidden"
               initial={{ height: 0 }}
               animate={{
                 height: animateHeight,

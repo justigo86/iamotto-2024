@@ -37,7 +37,7 @@ export function ModeToggle() {
     "text-sm text-slate-200 flex items-center px-2 py-2 relative z-20";
 
   return (
-    <div className="w-fit items-center mr-4 mt-1 z-20">
+    <div className="w-fit items-center mr-4 mt-1 z-20 absolute right-0">
       <div className="relative flex w-fit items-center rounded-full bg-slate-800">
         <button
           className={`${toggleClasses}`}

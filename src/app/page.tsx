@@ -16,7 +16,12 @@ const Home = () => {
           <div className="md:col-span-2 bg-gray-800 p-6 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Who am I?</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              I started in the industry two years ago primarily as a front-end
+              developer but have been blessed with opportunities to contribute
+              to projects in a full-stack capacity. Always learning, building,
+              and growing to push myself to be a better developer. I am
+              passionate about building scalable, secure, user-friendly websites
+              and applications through teamwork and critical thinking.
             </p>
           </div>
 
