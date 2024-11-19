@@ -4,6 +4,7 @@ import NavMenu from "./navmenu";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ModeToggle } from "../theme/mode-toggle";
+import { useNav } from "@/contexts/navContext";
 
 // const navMenuVariants: Variants = {
 //   hidden: { height: 0, transition: { duration: 0.5 } },
@@ -15,7 +16,8 @@ import { ModeToggle } from "../theme/mode-toggle";
 // };
 
 const Navbar = () => {
-  const [expandNav, setExpandNav] = useState<boolean>(false);
+  // const [expandNav, setExpandNav] = useState<boolean>(false);
+  const { expandNav, setExpandNav } = useNav();
   const [animateHeight, setAnimateHeight] = useState(() => "");
 
   const toggleNav = () => setExpandNav(!expandNav);
