@@ -139,20 +139,6 @@ const SlideProvider = ({ children }: { children: React.ReactNode }) => {
           </motion.div>
         </AnimatePresence>
         {/* <button
-          className="fixed top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
-          onClick={() => paginate(-1)}
-        >
-          <ChevronLeft className="text-gray-800 text-" />
-        </button>
-        <button
-          className="fixed top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md"
-          onClick={() => {
-            paginate(1);
-          }}
-        >
-          <ChevronRight className="w-6 h-6 text-gray-800" />
-        </button> */}
-        <button
           className="fixed top-1/2 left-2 transform -translate-y-1/2 bg-transparent"
           onClick={() => paginate(-1)}
         >
@@ -165,7 +151,7 @@ const SlideProvider = ({ children }: { children: React.ReactNode }) => {
           }}
         >
           <ArrowBigRight className="text-gray-800 dark:text-gray-200 h-20 w-20" />
-        </button>
+        </button> */}
       </div>
     </SlideContext.Provider>
   );
