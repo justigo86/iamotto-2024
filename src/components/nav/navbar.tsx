@@ -63,7 +63,7 @@ const Navbar = () => {
                 Collapse
               </button>
               {/* <NavMenu setExpandNav={setExpandNav} /> */}
-              <NavMenu />
+              <NavMenu expand={expandNav} />
             </motion.div>
           ) : (
             <motion.div

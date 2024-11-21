@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 // import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
@@ -30,12 +32,21 @@ const itemVariants: Variants = {
   exit: { opacity: 0, y: -20 },
 };
 
-const NavMenu = () => {
+const NavMenu = ({ expand }: { expand: boolean }) => {
   //NOTE: this is an issue - cannot call outside of slideProvider
   const { navigateToPage } = useSlideContext();
   // const { uiOrientation, setUiOrientation } = useUiOrientationContext();
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  // Only trigger animation when expandNav changes
+  useEffect(() => {
+    if (expand) {
+      setShouldAnimate(true);
+    }
+  }, [expand]);
 
   const onLinkClick = (id: number) => {
+    setShouldAnimate(false);
     // setUiOrientation(orientation);
     navigateToPage(id - 1);
   };
