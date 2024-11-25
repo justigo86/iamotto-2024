@@ -36,17 +36,17 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
   //NOTE: this is an issue - cannot call outside of slideProvider
   const { navigateToPage } = useSlideContext();
   // const { uiOrientation, setUiOrientation } = useUiOrientationContext();
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  // const [shouldAnimate, setShouldAnimate] = useState(false);
 
   // Only trigger animation when expandNav changes
-  useEffect(() => {
-    if (expand) {
-      setShouldAnimate(true);
-    }
-  }, [expand]);
+  // useEffect(() => {
+  //   if (expand) {
+  //     setShouldAnimate(true);
+  //   }
+  // }, [expand]);
 
   const onLinkClick = (id: number) => {
-    setShouldAnimate(false);
+    // setShouldAnimate(false);
     // setUiOrientation(orientation);
     navigateToPage(id - 1);
   };

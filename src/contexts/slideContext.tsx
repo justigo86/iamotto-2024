@@ -2,12 +2,12 @@
 
 import { useState, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowBigLeft,
-  ArrowBigRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+// import {
+//   ArrowBigLeft,
+//   ArrowBigRight,
+//   ChevronLeft,
+//   ChevronRight,
+// } from "lucide-react";
 import { ComponentInterface } from "@/types/ComponentInterface";
 
 import Home from "@/app/page";
