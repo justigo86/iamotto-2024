@@ -55,7 +55,7 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
     <div className="flex justify-center items-center">
       <motion.div
         key="menu"
-        className="flex mx-4 w-full h-[75vh] md:h-content justify-around font-urbanist text-3xl ml-6 md:ml-0 md:gap-6 flex-col md:flex-row"
+        className="flex w-full h-[75vh] md:h-content justify-around font-urbanist text-3xl md:ml-0 md:gap-6 flex-col md:flex-row"
         variants={navMenuItemVariants}
         initial="hidden"
         animate="visible"

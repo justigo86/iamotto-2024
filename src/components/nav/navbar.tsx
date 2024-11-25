@@ -40,7 +40,7 @@ const Navbar = () => {
   }, []);
 
   const buttonClass =
-    "items-start text-2xl ml-4 font-urbanist font-bold hover:underline";
+    "h-fit items-start text-2xl ml-4 font-urbanist font-bold hover:underline";
 
   return (
     <nav className="flex fixed w-screen top-0 z-10 justify-center items-center">
@@ -50,7 +50,7 @@ const Navbar = () => {
             <motion.div
               key="menu"
               // className="bg-light-fountainBlue dark:bg-dark-oracle h-screen w-screen overflow-hidden"
-              className="bg-slate-300 dark:bg-slate-800 md:bg-transparent md:dark:bg-transparent bg-opacity-90 dark:bg-opacity-90 h-content w-full overflow-hidden"
+              className="bg-slate-300 dark:bg-slate-800 md:bg-transparent md:dark:bg-transparent bg-opacity-90 dark:bg-opacity-90 h-content w-full align-middle overflow-hidden"
               initial={{ height: 0 }}
               animate={{
                 height: animateHeight,
@@ -59,15 +59,23 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               // transition={{ duration: 0.5 }}
             >
-              <button className={buttonClass} type="button" onClick={toggleNav}>
-                Collapse
-              </button>
+              <div className="flex justify-between">
+                <button
+                  className={buttonClass}
+                  type="button"
+                  onClick={toggleNav}
+                >
+                  Collapse
+                </button>
+                <ModeToggle />
+              </div>
               {/* <NavMenu setExpandNav={setExpandNav} /> */}
               <NavMenu expand={expandNav} />
             </motion.div>
           ) : (
             <motion.div
               key="menu"
+              className="flex justify-between w-full"
               initial={{ height: 0 }}
               animate={{
                 height: animateHeight,
@@ -78,10 +86,10 @@ const Navbar = () => {
               <button className={buttonClass} type="button" onClick={toggleNav}>
                 Menu
               </button>
+              <ModeToggle />
             </motion.div>
           )}
         </AnimatePresence>
-        <ModeToggle />
       </div>
     </nav>
   );
