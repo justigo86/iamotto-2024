@@ -25,11 +25,6 @@ const formSchema = z.object({
 });
 
 export default function ContactForm() {
-  // const [formInput, setFormInput] = useState({
-  //   name: "",
-  //   email: "",
-  //   comment: "",
-  // });
   const [response, setResponse] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
