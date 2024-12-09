@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <Card
           className={`relative overflow-hidden aspect-square ${
             colors[index % 3]
-          } border-4 border-white shadow-lg`}
+          } border-4 border-white shadow-lg w-[12rem]`}
         >
           <motion.img
             src={project.image}
@@ -72,8 +72,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 >
                   <X className="h-4 w-4" />
                 </Button>
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="aspect-video overflow-hidden rounded-lg">
+                <div className="">
+                  <div className="overflow-hidden rounded-lg">
                     <Image
                       src={project.image}
                       alt={project.title}

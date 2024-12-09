@@ -12,12 +12,15 @@ const Projects = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="flex flex-col container mx-auto px-4 py-12">
+      <h1 className="self-center text-5xl font-urbanist font-bold mb-[4rem]">
+        Projects
+      </h1>
       {rows.map((row, rowIndex) => (
         <div key={rowIndex} className="relative mb-24">
           <div
-            className={`grid grid-cols-3 gap-8 w-4/5 mx-auto ${
-              rowIndex % 2 === 0 ? "-ml-16" : "-mr-16"
+            className={`flex gap-8 w-4/5 mx-auto ${
+              rowIndex % 2 === 0 ? "ml-4" : "mr-4 justify-end"
             }`}
           >
             {row.map((project, index) => (
