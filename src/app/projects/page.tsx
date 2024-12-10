@@ -13,20 +13,28 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col container mx-auto px-4 py-12">
-      <h1 className="self-center text-5xl font-urbanist font-bold mb-[4rem]">
+      <h1 className="self-center text-5xl font-urbanist font-bold mb-10 md:mb-[4rem]">
         Projects
       </h1>
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="relative flex mb-24">
+        <div key={rowIndex} className="relative flex mb-10 md:mb-24">
           <div
-            className={`flex flex-col md:flex-row gap-8 w-4/5 mx-auto ${
+            className={`flex flex-col md:flex-row gap-10 w-full md:w-4/5 mx-auto md:${
               rowIndex % 2 === 0 ? "ml-4" : "mr-4 justify-end"
             }`}
           >
             {row.map((project, index) => (
               <div
                 key={project.id}
-                className={`flex  ${rowIndex % 2 === 0 ? "" : "justify-end"}`}
+                className={`flex  ${
+                  rowIndex % 2 === 0
+                    ? index % 2 === 0
+                      ? "justify-end"
+                      : "justify-start"
+                    : index % 2 === 0
+                    ? "justify-start"
+                    : "justify-end"
+                }`}
               >
                 <ProjectCard project={project} index={index} />
               </div>
