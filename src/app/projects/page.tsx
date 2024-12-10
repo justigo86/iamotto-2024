@@ -17,14 +17,17 @@ const Projects = () => {
         Projects
       </h1>
       {rows.map((row, rowIndex) => (
-        <div key={rowIndex} className="relative mb-24">
+        <div key={rowIndex} className="relative flex mb-24">
           <div
-            className={`flex gap-8 w-4/5 mx-auto ${
+            className={`flex flex-col md:flex-row gap-8 w-4/5 mx-auto ${
               rowIndex % 2 === 0 ? "ml-4" : "mr-4 justify-end"
             }`}
           >
             {row.map((project, index) => (
-              <div key={project.id}>
+              <div
+                key={project.id}
+                className={`flex  ${rowIndex % 2 === 0 ? "" : "justify-end"}`}
+              >
                 <ProjectCard project={project} index={index} />
               </div>
             ))}
