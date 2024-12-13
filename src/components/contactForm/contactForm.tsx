@@ -14,7 +14,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import {
+  DetailedHTMLProps,
+  ForwardRefExoticComponent,
+  InputHTMLAttributes,
+  RefAttributes,
+  TextareaHTMLAttributes,
+  useState,
+} from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
@@ -23,6 +30,54 @@ const formSchema = z.object({
   email: z.string(),
   comments: z.string().optional(),
 });
+
+interface FormType {
+  name: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  fieldType:
+    | ForwardRefExoticComponent<
+        DetailedHTMLProps<
+          TextareaHTMLAttributes<HTMLTextAreaElement>,
+          HTMLTextAreaElement
+        > &
+          RefAttributes<HTMLTextAreaElement>
+      >
+    | ForwardRefExoticComponent<
+        DetailedHTMLProps<
+          InputHTMLAttributes<HTMLInputElement>,
+          HTMLInputElement
+        > &
+          RefAttributes<HTMLInputElement>
+      >;
+  className?: string;
+}
+
+const formFieldData: FormType[] = [
+  {
+    name: "name",
+    label: "Name",
+    type: "text",
+    placeholder: "Enter your name",
+    fieldType: Input,
+  },
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "Enter your email address",
+    fieldType: Input,
+  },
+  {
+    name: "comments",
+    label: "Comments",
+    type: "text",
+    placeholder: "Comments welcomed!",
+    fieldType: Textarea,
+    className: "resize-none",
+  },
+];
 
 export default function ContactForm() {
   const [response, setResponse] = useState(false);
@@ -94,61 +149,30 @@ export default function ContactForm() {
         onClick={clearResponse}
         className="max-w-full min-w-80 md:min-w-96"
       >
-        <FormField
-          control={form.control}
-          defaultValue=""
-          name="name"
-          render={({ field }) => (
-            <FormItem className="my-4">
-              <FormLabel>Name:</FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your name" type="text" {...field} />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          defaultValue=""
-          name="email"
-          render={({ field }) => (
-            <FormItem className="my-4">
-              <FormLabel>Email:</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Enter your email address"
-                  type="email"
-                  {...field}
-                />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          defaultValue=""
-          name="comments"
-          render={({ field }) => (
-            <FormItem className="my-4">
-              <FormLabel>Comment/Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Comments welcomed!"
-                  className="resize-none"
-                  {...field}
-                />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {formFieldData.map((data, index) => {
+          return (
+            <FormField
+              key={index}
+              control={form.control}
+              defaultValue=""
+              name={data.name as "name" | "email" | "comments"}
+              render={({ field }) => (
+                <FormItem className="my-4">
+                  <FormLabel>{data.label}:</FormLabel>
+                  <FormControl>
+                    <data.fieldType
+                      placeholder={data.placeholder}
+                      type={data.type}
+                      {...field}
+                      className={data.className}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          );
+        })}
         <Button type="submit">Submit</Button>
       </form>
     </Form>
