@@ -1,6 +1,6 @@
 import React from "react";
 import bgSmart from "/public/SmartBrainCapture.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 // import { Card } from "@/components/ui/card";
 
 const sparqTags: string[] = [
@@ -14,9 +14,18 @@ const sparqTags: string[] = [
 const augTechTags: string[] = ["SQL"];
 const rootTags: string[] = ["HTML", "CSS", "JavaScript"];
 
-const experienceData: any[] = [
+interface ExperienceType {
+  years: string;
+  title: string;
+  company: string;
+  description: string;
+  image: StaticImageData;
+  imgAlt: string;
+  tags: string[];
+}
+
+const experienceData: ExperienceType[] = [
   {
-    id: 1,
     years: "2021 - Present",
     title: "Developer",
     company: "Sparq Holdings",
@@ -27,7 +36,6 @@ const experienceData: any[] = [
     tags: ["React", "Angular", "TypeScript", "SQL", "Splunk", "AWS"],
   },
   {
-    id: 2,
     years: "2021 - 2021",
     title: "Freelance Web Developer",
     company: "Root (FnA Developments LLC)",
@@ -38,7 +46,6 @@ const experienceData: any[] = [
     tags: ["HTML", "CSS", "JavaScript"],
   },
   {
-    id: 3,
     years: "2019 - 2021",
     title: "Registrar",
     company: "Augusta Technical College",
@@ -58,10 +65,10 @@ const Experience = () => {
           Experience
         </h1>
         <div className="max-w-7xl">
-          {experienceData.map((experience) => {
+          {experienceData.map((experience, rowIndex) => {
             return (
               <div
-                key={experience.id}
+                key={rowIndex}
                 className="py-12 md:py-8 flex flex-col md:grid md:grid-cols-4 gap-4 md:gap-10 "
               >
                 <div className="col-span-3 flex flex-col gap-4 md:grid md:grid-cols-5">
