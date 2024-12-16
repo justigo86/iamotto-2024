@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 // import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
-import { components } from "@/contexts/slideContext";
+import { components } from "@/data/componentData";
 // import { useSlideContext } from "@/contexts/slideContext";
 import { ComponentInterface } from "@/types/ComponentInterface";
 
@@ -84,12 +84,12 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
                   whileHover="hovered"
                   // onClick={() => onLinkClick(component.id)}
                 >
-                  {typeof component.path === "string" ? (
+                  {typeof component.name === "string" ? (
                     <motion.div>
                       <span className="text-sm md:text-lg">
                         0{component.id}
                       </span>
-                      {component.path.split("").map((letter, index) => {
+                      {component.name.split("").map((letter, index) => {
                         return (
                           <motion.span
                             key={index}
@@ -110,14 +110,14 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
                       })}
                     </motion.div>
                   ) : (
-                    <motion.div>{component.path}</motion.div>
+                    <motion.div>{component.name}</motion.div>
                   )}
-                  {typeof component.path === "string" ? (
+                  {typeof component.name === "string" ? (
                     <motion.div className="absolute inset-0">
                       <span className="text-sm md:text-lg">
                         0{component.id}
                       </span>
-                      {component.path.split("").map((letter, index) => {
+                      {component.name.split("").map((letter, index) => {
                         return (
                           <motion.span
                             key={index}

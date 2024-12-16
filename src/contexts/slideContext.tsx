@@ -1,59 +1,22 @@
-"use client";
+// "use client";
 
-import { useState, createContext, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import { useState, createContext, useContext } from "react";
+// import { motion, AnimatePresence } from "framer-motion";
 // import {
 //   ArrowBigLeft,
 //   ArrowBigRight,
 //   ChevronLeft,
 //   ChevronRight,
 // } from "lucide-react";
-import { ComponentInterface } from "@/types/ComponentInterface";
+// import { ComponentInterface } from "@/types/ComponentInterface";
 
-import Home from "@/app/page";
-import Experience from "@/app/experience/page";
-import About from "@/app/about/page";
-import Projects from "@/app/projects/page";
-import Connect from "@/app/connect/page";
+// import Home from "@/app/page";
+// import Experience from "@/app/experience/page";
+// import About from "@/app/about/page";
+// import Projects from "@/app/projects/page";
+// import Connect from "@/app/connect/page";
 // import { useUiOrientationContext } from "./uiOrientationContext";
 
-export const components: ComponentInterface[] = [
-  {
-    id: 1,
-    path: "#home",
-    shown: true,
-    uiOrientation: "vertical",
-    component: Home,
-  },
-  {
-    id: 2,
-    path: "#experience",
-    shown: true,
-    uiOrientation: "horizontal",
-    component: Experience,
-  },
-  {
-    id: 3,
-    path: "#projects",
-    shown: true,
-    uiOrientation: "horizontal",
-    component: Projects,
-  },
-  {
-    id: 4,
-    path: "#about",
-    shown: true,
-    uiOrientation: "horizontal",
-    component: About,
-  },
-  {
-    id: 5,
-    path: "#connect",
-    shown: true,
-    uiOrientation: "horizontal",
-    component: Connect,
-  },
-];
 // const components = [Home, Experience, Projects About, Connect];
 
 // interface SlideContextType {
