@@ -6,10 +6,10 @@ import Projects from "./projects/page";
 const Home = () => {
   return (
     <>
-      <Hero />
-      <Experience />
-      <Projects />
-      <Connect />
+      <Hero id={"home"} />
+      <Experience id={"experience"} />
+      <Projects id={"projects"} />
+      <Connect id={"connect"} />
     </>
   );
 };

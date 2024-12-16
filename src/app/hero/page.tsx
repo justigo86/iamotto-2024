@@ -2,9 +2,12 @@ import React from "react";
 import HeroIcons from "../../components/hero/heroIcons";
 import Eyes from "@/components/eyes/eyes";
 
-const Hero = () => {
+const Hero = ({ id }: { id: string }) => {
   return (
-    <div className="min-h-screen bg-light-fountainBlue dark:bg-dark-oracle pt-24">
+    <div
+      id={id}
+      className="min-h-screen bg-light-fountainBlue dark:bg-dark-oracle pt-24"
+    >
       <main className="container mx-auto p-4 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
           <div className="md:col-span-2 bg-gray-800 p-6 rounded-lg">

@@ -5,7 +5,7 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 // import { useUiOrientationContext } from "@/contexts/uiOrientationContext";
 import { components } from "@/contexts/slideContext";
-import { useSlideContext } from "@/contexts/slideContext";
+// import { useSlideContext } from "@/contexts/slideContext";
 import { ComponentInterface } from "@/types/ComponentInterface";
 
 const navMenuItemVariants: Variants = {
@@ -34,7 +34,7 @@ const itemVariants: Variants = {
 
 const NavMenu = ({ expand }: { expand: boolean }) => {
   //NOTE: this is an issue - cannot call outside of slideProvider
-  const { navigateToPage } = useSlideContext();
+  // const { navigateToPage } = useSlideContext();
   // const { uiOrientation, setUiOrientation } = useUiOrientationContext();
   // const [shouldAnimate, setShouldAnimate] = useState(false);
 
@@ -45,11 +45,11 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
   //   }
   // }, [expand]);
 
-  const onLinkClick = (id: number) => {
-    // setShouldAnimate(false);
-    // setUiOrientation(orientation);
-    navigateToPage(id - 1);
-  };
+  // const onLinkClick = (id: number) => {
+  //   // setShouldAnimate(false);
+  //   // setUiOrientation(orientation);
+  //   navigateToPage(id - 1);
+  // };
 
   return (
     <div className="flex justify-center items-center">
@@ -76,13 +76,13 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
               }`}
             >
               {/* <Link href={`${component.path}?ui=${component.uiOrientation}`}> */}
-              <Link href={`${component.path}`}>
+              <a href={`/${component.path}`}>
                 <motion.div
                   className={`relative block overflow-hidden whitespace-nowrap cursor-pointer`}
                   variants={itemVariants}
                   initial="initial"
                   whileHover="hovered"
-                  onClick={() => onLinkClick(component.id)}
+                  // onClick={() => onLinkClick(component.id)}
                 >
                   {typeof component.path === "string" ? (
                     <motion.div>
@@ -141,7 +141,7 @@ const NavMenu = ({ expand }: { expand: boolean }) => {
                     ""
                   )}
                 </motion.div>
-              </Link>
+              </a>
             </motion.div>
           );
         })}

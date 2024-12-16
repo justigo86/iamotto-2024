@@ -3,7 +3,7 @@
 import { ThemeProvider } from "@/components/theme/theme-provider";
 // import UiOrientationContextProvider from "../contexts/uiOrientationContext";
 import { Suspense } from "react";
-import SlideProvider from "@/contexts/slideContext";
+// import SlideProvider from "@/contexts/slideContext";
 import { NavProvider } from "@/contexts/navContext";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
@@ -19,7 +19,9 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       <Suspense fallback={<div>Loading...</div>}>
         {/* <UiOrientationContextProvider> */}
         <NavProvider>
-          <SlideProvider>{children}</SlideProvider>
+          {/* <SlideProvider> */}
+          {children}
+          {/* </SlideProvider> */}
         </NavProvider>
         {/* </UiOrientationContextProvider> */}
       </Suspense>
