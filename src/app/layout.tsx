@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -23,6 +24,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className="text-red-700 h-content scroll-smooth"
     >
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      ></link>
       <body className={inter.className}>
         <Providers>
           <Navbar />

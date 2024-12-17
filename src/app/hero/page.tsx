@@ -1,6 +1,7 @@
 import React from "react";
 import HeroIcons from "../../components/hero/heroIcons";
 import Eyes from "@/components/eyes/eyes";
+import TechIcons from "@/components/hero/techIcons";
 
 const Hero = ({ id }: { id: string }) => {
   return (
@@ -42,28 +43,9 @@ const Hero = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="flex flex-col bg-gray-800 p-6 rounded-lg items-center justify-center">
             <h2 className="text-xl font-bold mb-4">Technologies</h2>
-            <div className="grid grid-cols-4 gap-4">
-              {[
-                "JS",
-                "TS",
-                "SQL",
-                "Splunk",
-                "React",
-                "Node",
-                "NextJS",
-                "Angular",
-                "Git",
-              ].map((tech) => (
-                <div
-                  key={tech}
-                  className="bg-gray-700 p-2 rounded-full text-center"
-                >
-                  {tech}
-                </div>
-              ))}
-            </div>
+            <TechIcons />
           </div>
 
           <div className="bg-gray-800 p-6 rounded-lg flex flex-col justify-center items-center">
