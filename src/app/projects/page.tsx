@@ -14,7 +14,8 @@ const Projects = ({ id }: { id: string }) => {
   return (
     <div
       id={id}
-      className="bg-orange-200 dark:bg-orange-600 w-screen min-h-screen h-content overflow-y-visible md:overflow-hidden pt-32"
+      // className="bg-orange-200 dark:bg-orange-600 w-screen min-h-screen h-content overflow-y-visible md:overflow-hidden pt-32"
+      className="w-screen min-h-screen h-content overflow-y-visible md:overflow-hidden pt-32"
     >
       <main className="flex flex-col container mx-auto px-4 py-12">
         <h1 className="self-center text-5xl font-urbanist font-bold mb-10 md:mb-[4rem]">

@@ -7,7 +7,8 @@ const Hero = ({ id }: { id: string }) => {
   return (
     <div
       id={id}
-      className="min-h-screen bg-light-fountainBlue dark:bg-dark-oracle pt-24"
+      // className="min-h-screen bg-light-fountainBlue dark:bg-dark-oracle pt-24"
+      className="min-h-screen pt-24"
     >
       <main className="container mx-auto p-4 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
