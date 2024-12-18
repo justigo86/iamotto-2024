@@ -49,6 +49,10 @@ const techIconList: TechIconProps[] = [
 const TechIcons = () => {
   return (
     <div className="grid grid-cols-3 gap-9">
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      ></link>
       {techIconList.map((tech) => (
         // <div
         //   key={tech}
