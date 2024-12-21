@@ -60,10 +60,9 @@ const Hero = ({ id }: { id: string }) => {
             <ul className="space-y-2">
               <li>
                 <h3 className="font-bold">Topic One</h3>
-                <p className="text-sm">Bullet point one</p>
               </li>
             </ul>
-            <p className="text-center font-bold">Quote?</p>
+            <p className="font-bold">Quote?</p>
           </div>
         </div>
       </main>
