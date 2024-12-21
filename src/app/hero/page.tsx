@@ -24,7 +24,7 @@ const Hero = ({ id }: { id: string }) => {
             </p>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg flex items-center justify-center">
+          <div className="bg-blue-600 p-6 rounded-lg flex items-center justify-center">
             <h2 className="text-xl font-bold mb-4">Photo?</h2>
             {/* <Image src="/placeholder.svg" alt="Night sky" width={300} height={200} className="rounded-lg" /> */}
           </div>
@@ -53,7 +53,7 @@ const Hero = ({ id }: { id: string }) => {
             <h2 className="text-xl font-bold mb-4">About</h2>
           </div>
 
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="md:col-span-2 bg-gray-800 p-6 rounded-lg flex flex-col items-center justify-center">
             <h2 className="text-xl font-bold mb-4">
               Not sure what is going to go here yet
             </h2>
@@ -63,9 +63,6 @@ const Hero = ({ id }: { id: string }) => {
                 <p className="text-sm">Bullet point one</p>
               </li>
             </ul>
-          </div>
-
-          <div className="bg-blue-600 p-6 rounded-lg flex items-center justify-center">
             <p className="text-center font-bold">Quote?</p>
           </div>
         </div>
