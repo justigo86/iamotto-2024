@@ -1,78 +1,59 @@
-export interface Project {
+import image1 from "../../../public/RoboFriendsCap.jpg";
+import image2 from "../../../public/PennyGalleryCapture2.jpg";
+import image3 from "../../../public/SmartBrainCapture.jpg";
+import image5 from "../../../public/CrownClothingHomepage.png";
+
+export interface ProjectInfo {
   id: number;
   title: string;
-  description: string;
-  image: string;
+  details: string;
   technologies: string[];
+  link1: string;
+  link2: string;
+  image?: string;
 }
 
-export const PROJECTS: Project[] = [
+export const cardInfo: ProjectInfo[] = [
   {
-    id: 50,
-    title: "Immortals Fenyx Rising",
-    description:
-      "An action-adventure game set in the world of Greek mythology.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Ubisoft Quebec", "Action-Adventure", "Greek Mythology"],
+    id: 4,
+    title: "E-Commerce Shopping App",
+    details: `E-commerce inspired clothing store app. 
+      User account with shopping cart capability.
+      Project part of Complete React Developer course.`,
+    technologies: ["React", "Redux", "Firebase/Firestore"],
+    link1: "https://justigo86.github.io/crd_capstone_dev/",
+    link2: "https://github.com/justigo86/crd_capstone_dev",
+    image: image5.src,
   },
   {
-    id: 49,
-    title: "Final Fantasy VII Remake Intergrade",
-    description:
-      "A reimagining of the iconic RPG with enhanced visuals and new content.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Square Enix", "RPG", "PlayStation 5"],
+    id: 3,
+    title: "Face Detection App",
+    details: `PERN stack React App with AI face-detection. 
+      User account capability with upload history.
+      Project part of Zero to Mastery Web Development course.`,
+    technologies: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    link1: "http://smart-brain-jotto.herokuapp.com/",
+    link2: "https://github.com/justigo86/SmartBrain",
+    image: image3.src,
   },
   {
-    id: 48,
-    title: "Mundaun",
-    description: "A hand-penciled horror tale set in the Swiss Alps.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Hidden Fields", "Horror", "Indie"],
+    id: 2,
+    title: "Image Gallery App",
+    details: `Unfinished React App. View, add, and delete gallery images.
+      A learning project that grew to memorialize a beloved pup.`,
+    technologies: ["React", "Firebase/Firestore"],
+    link1: "https://justigo86.github.io/gallery4pen/",
+    link2: "https://github.com/justigo86/gallery4pen",
+    image: image2.src,
   },
   {
-    id: 47,
-    title: "Back 4 Blood",
-    description:
-      "A cooperative first-person shooter from the creators of Left 4 Dead.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Turtle Rock Studios", "FPS", "Cooperative"],
-  },
-  {
-    id: 46,
-    title: "Tender: Creature Comforts",
-    description: "A narrative game about finding love in a world of monsters.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Gideon Lazarus", "Visual Novel", "Indie"],
-  },
-  {
-    id: 45,
-    title: "Cookie Run: Kingdom",
-    description: "A mobile RPG featuring cookie characters in a fantasy world.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Devsisters", "Mobile", "RPG"],
-  },
-  {
-    id: 44,
-    title: "Cyber Shadow",
-    description: "A challenging 2D action-platformer in a cyberpunk world.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Mechanical Head Studios", "Platformer", "Retro"],
-  },
-  {
-    id: 43,
-    title: "Hitman 3",
-    description:
-      "The dramatic conclusion to the World of Assassination trilogy.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["IO Interactive", "Stealth", "Action"],
-  },
-  {
-    id: 42,
-    title: "Hades",
-    description:
-      "A rogue-like dungeon crawler that combines Greek mythology with fast-paced action.",
-    image: "/placeholder.svg?height=600&width=600",
-    technologies: ["Supergiant Games", "Rogue-like", "Action RPG"],
+    id: 1,
+    title: "Dynamic Search Bar App",
+    details: `React App used to dynamically search hash database. 
+      Project part of Zero to Mastery Web Development course.`,
+    technologies: ["React"],
+    link1: "https://justigo86.github.io/robofriends/",
+    link2: "https://github.com/justigo86/SmartBrain",
+    image: image1.src,
   },
 ];

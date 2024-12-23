@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { Project } from "./projectData";
+import { ProjectInfo } from "./projectData";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 
 interface ProjectCardProps {
-  project: Project;
+  project: ProjectInfo;
   index: number;
 }
 
@@ -38,7 +38,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             className="object-cover w-full h-full opacity-75"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-            <span className="text-5xl font-bold mb-2">{project.id}</span>
+            {/* <span className="text-5xl font-bold mb-2">{project.id}</span> */}
             <h3 className="text-lg font-semibold text-center px-2">
               {project.title}
             </h3>
@@ -61,7 +61,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="fixed inset-4 md:inset-10 z-50 bg-white rounded-lg shadow-xl overflow-auto"
+              className="fixed inset-4 md:inset-10 z-50 rounded-lg shadow-xl overflow-auto"
             >
               <div className="relative p-6">
                 <Button
@@ -75,14 +75,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <div className="">
                   <div className="overflow-hidden rounded-lg">
                     <Image
-                      src={project.image}
+                      src={project.image ?? ""}
                       alt={project.title}
+                      width={200}
+                      height={200}
                       className="object-cover w-full h-full"
                     />
                   </div>
                   <div className="space-y-4">
                     <h2 className="text-3xl font-bold">{project.title}</h2>
-                    <p className="text-gray-600">{project.description}</p>
+                    <p className="text-gray-600">{project.details}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
                         <span

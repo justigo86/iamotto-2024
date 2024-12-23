@@ -2,13 +2,13 @@
 
 import { ProjectCard } from "../../components/cards/projectCard";
 // import { Arrow } from '@/components/projects/Arrow'
-import { PROJECTS } from "../../components/cards/projectData";
+import { cardInfo } from "../../components/cards/projectData";
 
 const Projects = ({ id }: { id: string }) => {
   const rows = [
-    PROJECTS.slice(0, 3),
-    PROJECTS.slice(3, 6),
-    PROJECTS.slice(6, 9),
+    cardInfo.slice(0, 3),
+    cardInfo.slice(3, 6),
+    cardInfo.slice(6, 9),
   ];
 
   return (
